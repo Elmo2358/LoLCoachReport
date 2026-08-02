@@ -1,0 +1,25 @@
+# Secrets / env
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Generated data
+data/ddragon_cache/
+data/matches/
+data/reports/
+
+# PyInstaller build artifacts
+build/
+dist/
+*.spec
+
+# Claude Code local settings
+.claude/
+
+# GUI が dev モードで保存する APIキー入り設定（exe化時はリポジトリ外になる）
+data/settings.json
