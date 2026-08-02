@@ -14,6 +14,7 @@ import paths
 import core
 import csv_export
 import config
+from riot_client import SERVER_TO_PLATFORM
 
 
 class _NullStd:
@@ -34,6 +35,12 @@ class App:
         root.title(f"LoL コーチングレポート ({self.my_full})")
         root.geometry("820x680")
         root.minsize(680, 540)
+        try:
+            root.iconbitmap(default=False)  # 念のためリセット
+            if os.path.exists(paths.icon_path()):
+                root.iconbitmap(paths.icon_path())
+        except Exception:
+            pass
         self.result = None
         self._build_ui()
         self._load_settings()
@@ -117,9 +124,18 @@ class App:
             pass
 
     # ---------------- 実行 ----------------
+    def _normalize_match_id(self, raw):
+        """数値のみ（例: 595633237）は自分のホームサーバーの前置詞を補完（JP1_595633237）。"""
+        raw = (raw or "").strip()
+        if raw and "_" not in raw and raw.isdigit():
+            _, _, _, _, server = config.get_my_account()
+            prefix = SERVER_TO_PLATFORM.get(server, "JP1")
+            return f"{prefix}_{raw}"
+        return raw
+
     def _on_run(self):
         api_key = self.key_var.get().strip()
-        match_id = self.match_var.get().strip()
+        match_id = self._normalize_match_id(self.match_var.get())
         if not api_key:
             messagebox.showwarning("APIキー", "APIキーを入力してください。\nRiot Developer Portal で取得（24時間で期限切れ）。")
             return
@@ -134,12 +150,18 @@ class App:
         self._set_busy(True, "サンプルで生成中...")
         threading.Thread(target=self._worker_sample, daemon=True).start()
 
+    def _make_progress(self):
+        def progress(msg):
+            self.root.after(0, lambda m=msg: self.status_var.set(m))
+        return progress
+
     def _worker_real(self, api_key, match_id):
         try:
             result = core.process(api_key, match_id=match_id or None,
                                   auto_me=self.auto_var.get(), lang="ja",
                                   coach=self.coach_var.get(),
-                                  player=self.player_var.get().strip() or None)
+                                  player=self.player_var.get().strip() or None,
+                                  progress=self._make_progress())
             self.root.after(0, lambda: self._on_done(result))
         except core.ProcessError as e:
             self.root.after(0, lambda: self._on_error(str(e)))
@@ -155,7 +177,8 @@ class App:
             _, server = RiotClient.parse_region(match["metadata"]["matchId"])
             result = core.process_match_data(match, server, lang="ja",
                                              coach=self.coach_var.get(),
-                                             player=self.player_var.get().strip() or None)
+                                             player=self.player_var.get().strip() or None,
+                                             progress=self._make_progress())
             self.root.after(0, lambda: self._on_done(result, sample=True))
         except Exception as e:
             self.root.after(0, lambda: self._on_error(f"サンプル処理エラー: {e}"))
@@ -247,9 +270,20 @@ def _fix_stdio():
             sys.stderr = _NullStd()
 
 
+def _set_app_user_model_id(app_id="elmo2358.LoLCoachReport"):
+    """Windows のタスクバーがデフォルト(Tk/Python)アイコンを使わないよう、
+    プロセスに固有の AppUserModelID を設定する（ウィンドウ生成より前）。"""
+    try:
+        import ctypes
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(app_id)
+    except Exception:
+        pass
+
+
 def main():
     _fix_stdio()
     _load_env()
+    _set_app_user_model_id()
     root = tk.Tk()
     App(root)
     root.mainloop()

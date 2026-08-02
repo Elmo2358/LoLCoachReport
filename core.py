@@ -44,12 +44,22 @@ def resolve_focal(ir, player):
     return find_me(ir)
 
 
-def process_match_data(match, server, lang="ja", coach=False, player=None):
+def process_match_data(match, server, lang="ja", coach=False, player=None, progress=None):
     """取得済みの試合データから統計抽出＋レポート生成（ネットワーク不要）。"""
+    def _p(msg):
+        if progress:
+            try:
+                progress(msg)
+            except Exception:
+                pass
+
     game_version = match.get("info", {}).get("gameVersion", "")
+    _p("Data Dragon 取得中（初回は数十秒かかる場合があります）...")
     dd = DDragon(game_version, locale=LOCALE_MAP.get(lang, "ja_JP"))
+    _p("統計抽出中...")
     ir = extract(match, server, dd)
     focal = resolve_focal(ir, player)
+    _p("レポート生成中...")
     markdown = build_report(ir, coach=coach, focal=focal)
     return {
         "ir": ir,
@@ -62,8 +72,15 @@ def process_match_data(match, server, lang="ja", coach=False, player=None):
     }
 
 
-def process(api_key, match_id=None, auto_me=False, lang="ja", coach=False, player=None):
+def process(api_key, match_id=None, auto_me=False, lang="ja", coach=False, player=None, progress=None):
     """APIキーと試合ID（または自動取得）からレポートを生成。"""
+    def _p(msg):
+        if progress:
+            try:
+                progress(msg)
+            except Exception:
+                pass
+
     if not api_key:
         raise ProcessError("APIキーが設定されていません。GUIのAPIキー欄に入力してください。")
     try:
@@ -77,6 +94,7 @@ def process(api_key, match_id=None, auto_me=False, lang="ja", coach=False, playe
         name, tag, _, region, _ = config.get_my_account()
         if not (name and tag):
             raise ProcessError("自分のアカウントが未設定です（.env の MY_GAME_NAME/MY_TAG_LINE）。")
+        _p(f"アカウント {name}#{tag} の直近試合を取得中...")
         try:
             puuid = client.get_puuid(name, tag, region)
             ids = client.get_latest_match_id(puuid, region, count=1)
@@ -88,6 +106,7 @@ def process(api_key, match_id=None, auto_me=False, lang="ja", coach=False, playe
             raise ProcessError("直近の試合が見つかりませんでした。")
         match_id = ids[0]
 
+    _p(f"API から試合 {match_id} を取得中...")
     try:
         match, server = client.get_match(match_id)
     except RiotApiError as e:
@@ -95,4 +114,4 @@ def process(api_key, match_id=None, auto_me=False, lang="ja", coach=False, playe
     except ValueError as e:  # リージョン判定失敗
         raise ProcessError(str(e))
 
-    return process_match_data(match, server, lang=lang, coach=coach, player=player)
+    return process_match_data(match, server, lang=lang, coach=coach, player=player, progress=progress)

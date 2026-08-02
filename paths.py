@@ -49,3 +49,10 @@ def sample_path():
     if is_frozen():
         return os.path.join(sys._MEIPASS, "data", "sample_match.json")
     return os.path.join(os.getcwd(), "data", "sample_match.json")
+
+
+def icon_path():
+    """アプリアイコン。凍結時は _MEIPASS、開発時は ./icon.ico。"""
+    if is_frozen():
+        return os.path.join(sys._MEIPASS, "icon.ico")
+    return os.path.join(os.getcwd(), "icon.ico")

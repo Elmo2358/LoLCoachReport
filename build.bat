@@ -8,7 +8,9 @@ if errorlevel 1 (
 )
 
 pyinstaller --onefile --windowed --name LoLCoachReport ^
+    --icon icon.ico ^
     --add-data "data\sample_match.json;data" ^
+    --add-data "icon.ico;." ^
     --clean --noconfirm gui.py
 
 REM アカウント設定（MY_*）をexeと同じ場所に配置し、自動取得・強調表示を有効化
