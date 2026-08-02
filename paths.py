@@ -56,3 +56,10 @@ def icon_path():
     if is_frozen():
         return os.path.join(sys._MEIPASS, "icon.ico")
     return os.path.join(os.getcwd(), "icon.ico")
+
+
+def fonts_dir():
+    """バンドルフォント。凍結時は _MEIPASS/fonts、開発時は ./fonts。"""
+    if is_frozen():
+        return os.path.join(sys._MEIPASS, "fonts")
+    return os.path.join(os.getcwd(), "fonts")
