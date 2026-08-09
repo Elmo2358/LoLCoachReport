@@ -1,6 +1,6 @@
 {
-  "_schema_version": 1,
-  "_comment": "Fiddlesticks Mid 視点の対面メタデータ。キー=DDragon内部名。手動管理。roles のみ出力対象ロールを決定し、skill/CC/数値は generate_md が DDragon から自動取得する（ここには書かない）。ビルド・キーストーン・サモナースペル等のメタ依存項目はパッチ毎に要検証（Lolalytics等）。空配列/省略時はMD上『（未登録）』となる。",
+  "_schema_version": 2,
+  "_comment": "Fiddlesticks Mid 視点のチャンピオン対策メタデータ。キー=DDragon内部名。schema_version=2。\n[手動メタ(人間の主観・温存)] roles: 出力対象ロール。meta_info[role] の threat/core_builds/\n summoner_spells/keystone/power_spikes/tactics は手動管理。skill/CC/数値は generate_md が\n DDragon から自動取得(手書きしない)。空欄/省略時はMDで(未登録)となる。\n[自動メタ(客観・fetched_meta)] meta_info[role].fetched_meta は meta_loader.py が U.GG から\n 自動取得(勝率/Pick/Ban/Tier等)。パッチ毎に上書きされるため手動編集禁止。generate_md は\n fetched_meta を読むだけでLLMは産出に関与しない(エコーチェンバー防止)。",
   "Aurora": {
     "roles": [
       "Mid",
@@ -10,12 +10,40 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": "ハードCCを持たないため、フィドルのW(ドレイン)は彼女からは中断されない（実データでQ/W/E/RすべてCC命中なしを確認済み）。一方 W(ベールを越えて)でインビジブル化＋位置調整が可能で、Q/Eの魔法バーストとRの範囲ダメージが重い。Wを使用した直後は寄りや不意打ちの可能性が高まるため距離を取る。敵JGとの連携（インビジブルからのガンク）が主な脅威。こちらのQ/EはWで躱されるうえ確実に当てるかミニオン越しを意識する。"
+        "tactics": "ハードCCを持たないため、フィドルのW(ドレイン)は彼女からは中断されない（実データでQ/W/E/RすべてCC命中なしを確認済み）。一方 W(ベールを越えて)でインビジブル化＋位置調整が可能で、Q/Eの魔法バーストとRの範囲ダメージが重い。Wを使用した直後は寄りや不意打ちの可能性が高まるため距離を取る。敵JGとの連携（インビジブルからのガンク）が主な脅威。こちらのQ/EはWで躱されるうえ確実に当てるかミニオン越しを意識する。",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 49.7,
+          "pick_rate": 2.12,
+          "ban_rate": 1.28,
+          "tier_stdevs": -0.205,
+          "matches": 43394
+        }
       },
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": "Topではサイドプッシュ要員。オールインの距離に入らず、W(インビジブル)の有無を確認してから_trade_を仕掛ける。"
+        "tactics": "Topではサイドプッシュ要員。オールインの距離に入らず、W(インビジブル)の有無を確認してから_trade_を仕掛ける。",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 50.0,
+          "pick_rate": 0.52,
+          "ban_rate": 1.28,
+          "tier_stdevs": -0.105,
+          "matches": 10702
+        }
       }
     }
   },
@@ -39,17 +67,59 @@
             "インフィニティ・エッジ"
           ]
         ],
-        "tactics": "風の壁(W)はフィドルのQ・E（投射物）を無効化するが、W(ドレイン)はチャネリングのため壁では止まらない。脅威はQ3(竜巻)とRのノックアップ＝いずれもW中断CC（実データでQ/Rにノックアップ検出済み）。ドレイン詠唱は竜巻を見てから、あるいは敵のQスタックが低い時に後出しする。Eでミニオンを透過して接近されるため距離管理が命。風の壁を誘い抜けてからQ/Eで応戦する。"
+        "tactics": "風の壁(W)はフィドルのQ・E（投射物）を無効化するが、W(ドレイン)はチャネリングのため壁では止まらない。脅威はQ3(竜巻)とRのノックアップ＝いずれもW中断CC（実データでQ/Rにノックアップ検出済み）。ドレイン詠唱は竜巻を見てから、あるいは敵のQスタックが低い時に後出しする。Eでミニオンを透過して接近されるため距離管理が命。風の壁を誘い抜けてからQ/Eで応戦する。",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "D",
+          "win_rate": 48.1,
+          "pick_rate": 7.84,
+          "ban_rate": 16.19,
+          "tier_stdevs": -3.348,
+          "matches": 160296
+        }
       },
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "D",
+          "win_rate": 48.3,
+          "pick_rate": 3.35,
+          "ban_rate": 16.19,
+          "tier_stdevs": -1.868,
+          "matches": 68589
+        }
       },
       "ADC": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 51.4,
+          "pick_rate": 1.88,
+          "ban_rate": 16.19,
+          "tier_stdevs": 1.111,
+          "matches": 38502
+        }
       }
     }
   },
@@ -62,12 +132,40 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 50.4,
+          "pick_rate": 6.86,
+          "ban_rate": 7.79,
+          "tier_stdevs": 2.616,
+          "matches": 140373
+        }
       },
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S",
+          "win_rate": 51.7,
+          "pick_rate": 1.56,
+          "ban_rate": 7.79,
+          "tier_stdevs": 0.753,
+          "matches": 31824
+        }
       }
     },
     "_autogen": true
@@ -80,7 +178,21 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 51.4,
+          "pick_rate": 9.49,
+          "ban_rate": 2.93,
+          "tier_stdevs": 2.768,
+          "matches": 194177
+        }
       }
     },
     "_autogen": true
@@ -93,7 +205,21 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "C",
+          "win_rate": 49.5,
+          "pick_rate": 6.14,
+          "ban_rate": 16.13,
+          "tier_stdevs": -0.555,
+          "matches": 125508
+        }
       }
     },
     "_autogen": true
@@ -107,12 +233,40 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S",
+          "win_rate": 50.5,
+          "pick_rate": 2.57,
+          "ban_rate": 2.37,
+          "tier_stdevs": 0.59,
+          "matches": 52595
+        }
       },
       "ADC": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 50.1,
+          "pick_rate": 0.14,
+          "ban_rate": 2.37,
+          "tier_stdevs": -0.037,
+          "matches": 2906
+        }
       }
     },
     "_autogen": true
@@ -125,7 +279,21 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 51.3,
+          "pick_rate": 4.4,
+          "ban_rate": 1.55,
+          "tier_stdevs": 1.209,
+          "matches": 89981
+        }
       }
     },
     "_autogen": true
@@ -138,7 +306,21 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 50.7,
+          "pick_rate": 0.44,
+          "ban_rate": 5.45,
+          "tier_stdevs": 0.034,
+          "matches": 8983
+        }
       }
     },
     "_autogen": true
@@ -151,7 +333,21 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 49.8,
+          "pick_rate": 1.69,
+          "ban_rate": 0.85,
+          "tier_stdevs": -0.161,
+          "matches": 34667
+        }
       }
     },
     "_autogen": true
@@ -164,7 +360,21 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 50.2,
+          "pick_rate": 2.56,
+          "ban_rate": 2.7,
+          "tier_stdevs": 0.369,
+          "matches": 52373
+        }
       }
     },
     "_autogen": true
@@ -177,7 +387,21 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 50.8,
+          "pick_rate": 1.9,
+          "ban_rate": 0.53,
+          "tier_stdevs": 0.235,
+          "matches": 38852
+        }
       }
     },
     "_autogen": true
@@ -190,7 +414,21 @@
       "ADC": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 49.6,
+          "pick_rate": 4.04,
+          "ban_rate": 1.09,
+          "tier_stdevs": -0.311,
+          "matches": 82637
+        }
       }
     },
     "_autogen": true
@@ -203,7 +441,21 @@
       "ADC": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 50.1,
+          "pick_rate": 5.37,
+          "ban_rate": 1.57,
+          "tier_stdevs": 0.383,
+          "matches": 109844
+        }
       }
     },
     "_autogen": true
@@ -216,7 +468,21 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 49.8,
+          "pick_rate": 1.37,
+          "ban_rate": 0.49,
+          "tier_stdevs": -0.149,
+          "matches": 28014
+        }
       }
     },
     "_autogen": true
@@ -229,7 +495,21 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "C",
+          "win_rate": 46.8,
+          "pick_rate": 1.6,
+          "ban_rate": 0.28,
+          "tier_stdevs": -0.961,
+          "matches": 32759
+        }
       }
     },
     "_autogen": true
@@ -242,7 +522,21 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 49.9,
+          "pick_rate": 5.89,
+          "ban_rate": 2.91,
+          "tier_stdevs": -0.101,
+          "matches": 120514
+        }
       }
     },
     "_autogen": true
@@ -255,7 +549,21 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 50.4,
+          "pick_rate": 5.49,
+          "ban_rate": 7.32,
+          "tier_stdevs": 2.005,
+          "matches": 112310
+        }
       }
     },
     "_autogen": true
@@ -268,7 +576,21 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 51.2,
+          "pick_rate": 5.51,
+          "ban_rate": 9.29,
+          "tier_stdevs": 3.642,
+          "matches": 112641
+        }
       }
     },
     "_autogen": true
@@ -281,7 +603,21 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "C",
+          "win_rate": 48.9,
+          "pick_rate": 2.38,
+          "ban_rate": 3.62,
+          "tier_stdevs": -0.533,
+          "matches": 48700
+        }
       }
     },
     "_autogen": true
@@ -294,7 +630,21 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 51.6,
+          "pick_rate": 3.81,
+          "ban_rate": 4.16,
+          "tier_stdevs": 2.135,
+          "matches": 78022
+        }
       }
     },
     "_autogen": true
@@ -307,7 +657,21 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 51.2,
+          "pick_rate": 4.76,
+          "ban_rate": 9.08,
+          "tier_stdevs": 3.191,
+          "matches": 97347
+        }
       }
     },
     "_autogen": true
@@ -320,7 +684,21 @@
       "ADC": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "D",
+          "win_rate": 48.9,
+          "pick_rate": 12.66,
+          "ban_rate": 16.67,
+          "tier_stdevs": -2.945,
+          "matches": 259017
+        }
       }
     },
     "_autogen": true
@@ -334,12 +712,40 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 51.2,
+          "pick_rate": 2.11,
+          "ban_rate": 22.32,
+          "tier_stdevs": 2.248,
+          "matches": 43208
+        }
       },
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "D",
+          "win_rate": 49.0,
+          "pick_rate": 8.71,
+          "ban_rate": 22.32,
+          "tier_stdevs": -2.076,
+          "matches": 178195
+        }
       }
     },
     "_autogen": true
@@ -352,7 +758,21 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 49.3,
+          "pick_rate": 1.78,
+          "ban_rate": 1.7,
+          "tier_stdevs": -0.321,
+          "matches": 36427
+        }
       }
     },
     "_autogen": true
@@ -366,12 +786,40 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 49.8,
+          "pick_rate": 2.45,
+          "ban_rate": 0.61,
+          "tier_stdevs": -0.278,
+          "matches": 50216
+        }
       },
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 50.7,
+          "pick_rate": 0.51,
+          "ban_rate": 0.61,
+          "tier_stdevs": -0.044,
+          "matches": 10439
+        }
       }
     },
     "_autogen": true
@@ -385,12 +833,40 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 46.1,
+          "pick_rate": 0.35,
+          "ban_rate": 0.27,
+          "tier_stdevs": -0.341,
+          "matches": 7213
+        }
       },
       "ADC": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 49.3,
+          "pick_rate": 1.63,
+          "ban_rate": 0.27,
+          "tier_stdevs": -0.25,
+          "matches": 33396
+        }
       }
     },
     "_autogen": true
@@ -404,12 +880,40 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 50.4,
+          "pick_rate": 7.11,
+          "ban_rate": 12.98,
+          "tier_stdevs": 4.42,
+          "matches": 145383
+        }
       },
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 51.1,
+          "pick_rate": 0.81,
+          "ban_rate": 12.98,
+          "tier_stdevs": 0.397,
+          "matches": 16637
+        }
       }
     },
     "_autogen": true
@@ -422,7 +926,21 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "D",
+          "win_rate": 48.1,
+          "pick_rate": 3.05,
+          "ban_rate": 3.78,
+          "tier_stdevs": -1.124,
+          "matches": 62463
+        }
       }
     },
     "_autogen": true
@@ -435,7 +953,21 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 50.4,
+          "pick_rate": 4.82,
+          "ban_rate": 3.26,
+          "tier_stdevs": 1.239,
+          "matches": 98548
+        }
       }
     },
     "_autogen": true
@@ -448,7 +980,21 @@
       "ADC": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 49.8,
+          "pick_rate": 3.55,
+          "ban_rate": 10.15,
+          "tier_stdevs": 0.054,
+          "matches": 72549
+        }
       }
     },
     "_autogen": true
@@ -461,7 +1007,21 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 50.8,
+          "pick_rate": 3.27,
+          "ban_rate": 1.56,
+          "tier_stdevs": 0.486,
+          "matches": 66829
+        }
       }
     },
     "_autogen": true
@@ -474,7 +1034,21 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 50.4,
+          "pick_rate": 1.69,
+          "ban_rate": 1.02,
+          "tier_stdevs": 0.142,
+          "matches": 34595
+        }
       }
     },
     "_autogen": true
@@ -487,7 +1061,21 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S",
+          "win_rate": 51.0,
+          "pick_rate": 2.29,
+          "ban_rate": 1.93,
+          "tier_stdevs": 0.774,
+          "matches": 46814
+        }
       }
     },
     "_autogen": true
@@ -500,7 +1088,21 @@
       "ADC": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "D",
+          "win_rate": 46.9,
+          "pick_rate": 13.87,
+          "ban_rate": 4.42,
+          "tier_stdevs": -7.615,
+          "matches": 283745
+        }
       }
     },
     "_autogen": true
@@ -514,12 +1116,40 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 50.5,
+          "pick_rate": 2.23,
+          "ban_rate": 1.1,
+          "tier_stdevs": 0.248,
+          "matches": 45542
+        }
       },
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 49.6,
+          "pick_rate": 0.08,
+          "ban_rate": 1.1,
+          "tier_stdevs": -0.126,
+          "matches": 1617
+        }
       }
     },
     "_autogen": true
@@ -532,7 +1162,21 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 50.4,
+          "pick_rate": 3.95,
+          "ban_rate": 4.98,
+          "tier_stdevs": 1.815,
+          "matches": 80787
+        }
       }
     },
     "_autogen": true
@@ -545,7 +1189,21 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 51.1,
+          "pick_rate": 5.11,
+          "ban_rate": 6.26,
+          "tier_stdevs": 2.368,
+          "matches": 104555
+        }
       }
     },
     "_autogen": true
@@ -558,7 +1216,21 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S",
+          "win_rate": 50.5,
+          "pick_rate": 4.63,
+          "ban_rate": 2.01,
+          "tier_stdevs": 0.61,
+          "matches": 94742
+        }
       }
     },
     "_autogen": true
@@ -572,12 +1244,40 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 51.2,
+          "pick_rate": 5.92,
+          "ban_rate": 8.21,
+          "tier_stdevs": 4.544,
+          "matches": 121036
+        }
       },
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 50.4,
+          "pick_rate": 0.7,
+          "ban_rate": 8.21,
+          "tier_stdevs": 0.146,
+          "matches": 14343
+        }
       }
     },
     "_autogen": true
@@ -590,7 +1290,21 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 51.0,
+          "pick_rate": 6.52,
+          "ban_rate": 5.02,
+          "tier_stdevs": 3.129,
+          "matches": 133335
+        }
       }
     },
     "_autogen": true
@@ -603,7 +1317,21 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "D",
+          "win_rate": 48.8,
+          "pick_rate": 4.11,
+          "ban_rate": 1.34,
+          "tier_stdevs": -1.285,
+          "matches": 84154
+        }
       }
     },
     "_autogen": true
@@ -616,7 +1344,21 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 53.3,
+          "pick_rate": 0.47,
+          "ban_rate": 0.7,
+          "tier_stdevs": 0.162,
+          "matches": 9607
+        }
       }
     },
     "_autogen": true
@@ -629,7 +1371,21 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 50.2,
+          "pick_rate": 13.12,
+          "ban_rate": 14.88,
+          "tier_stdevs": 3.674,
+          "matches": 268488
+        }
       }
     },
     "_autogen": true
@@ -643,12 +1399,40 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "C",
+          "win_rate": 48.9,
+          "pick_rate": 2.07,
+          "ban_rate": 2.61,
+          "tier_stdevs": -0.767,
+          "matches": 42362
+        }
       },
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 49.0,
+          "pick_rate": 0.68,
+          "ban_rate": 2.61,
+          "tier_stdevs": -0.238,
+          "matches": 13814
+        }
       }
     },
     "_autogen": true
@@ -661,7 +1445,21 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 50.5,
+          "pick_rate": 4.68,
+          "ban_rate": 4.22,
+          "tier_stdevs": 1.317,
+          "matches": 95771
+        }
       }
     },
     "_autogen": true
@@ -674,7 +1472,21 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 45.3,
+          "pick_rate": 0.17,
+          "ban_rate": 1.83,
+          "tier_stdevs": -0.242,
+          "matches": 3498
+        }
       }
     },
     "_autogen": true
@@ -687,7 +1499,21 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 48.9,
+          "pick_rate": 0.63,
+          "ban_rate": 3.16,
+          "tier_stdevs": -0.193,
+          "matches": 12920
+        }
       }
     },
     "_autogen": true
@@ -700,7 +1526,21 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 50.5,
+          "pick_rate": 2.56,
+          "ban_rate": 4.56,
+          "tier_stdevs": 1.687,
+          "matches": 52317
+        }
       }
     },
     "_autogen": true
@@ -713,7 +1553,21 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "C",
+          "win_rate": 48.7,
+          "pick_rate": 2.52,
+          "ban_rate": 11.78,
+          "tier_stdevs": -0.876,
+          "matches": 51455
+        }
       }
     },
     "_autogen": true
@@ -726,7 +1580,21 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 52.0,
+          "pick_rate": 1.11,
+          "ban_rate": 0.39,
+          "tier_stdevs": 0.321,
+          "matches": 22807
+        }
       }
     },
     "_autogen": true
@@ -739,7 +1607,21 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 51.8,
+          "pick_rate": 4.16,
+          "ban_rate": 0.77,
+          "tier_stdevs": 1.259,
+          "matches": 85175
+        }
       }
     },
     "_autogen": true
@@ -752,7 +1634,21 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 50.1,
+          "pick_rate": 6.63,
+          "ban_rate": 1.33,
+          "tier_stdevs": 0.276,
+          "matches": 135686
+        }
       }
     },
     "_autogen": true
@@ -766,12 +1662,40 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 49.9,
+          "pick_rate": 5.98,
+          "ban_rate": 10.87,
+          "tier_stdevs": 0.015,
+          "matches": 122320
+        }
       },
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 49.8,
+          "pick_rate": 1.86,
+          "ban_rate": 10.87,
+          "tier_stdevs": -0.135,
+          "matches": 37991
+        }
       }
     },
     "_autogen": true
@@ -785,12 +1709,40 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "D",
+          "win_rate": 48.3,
+          "pick_rate": 5.69,
+          "ban_rate": 6.72,
+          "tier_stdevs": -2.77,
+          "matches": 116417
+        }
       },
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 48.7,
+          "pick_rate": 0.92,
+          "ban_rate": 6.72,
+          "tier_stdevs": -0.338,
+          "matches": 18896
+        }
       }
     },
     "_autogen": true
@@ -803,7 +1755,21 @@
       "ADC": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "D",
+          "win_rate": 49.3,
+          "pick_rate": 13.09,
+          "ban_rate": 0.94,
+          "tier_stdevs": -1.527,
+          "matches": 267769
+        }
       }
     },
     "_autogen": true
@@ -816,7 +1782,21 @@
       "ADC": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 51.4,
+          "pick_rate": 8.76,
+          "ban_rate": 1.71,
+          "tier_stdevs": 2.439,
+          "matches": 179180
+        }
       }
     },
     "_autogen": true
@@ -829,7 +1809,21 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "D",
+          "win_rate": 47.6,
+          "pick_rate": 3.85,
+          "ban_rate": 2.83,
+          "tier_stdevs": -2.709,
+          "matches": 78769
+        }
       }
     },
     "_autogen": true
@@ -842,7 +1836,21 @@
       "ADC": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 49.9,
+          "pick_rate": 21.17,
+          "ban_rate": 3.77,
+          "tier_stdevs": -0.353,
+          "matches": 433182
+        }
       }
     },
     "_autogen": true
@@ -855,7 +1863,21 @@
       "ADC": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 50.4,
+          "pick_rate": 1.69,
+          "ban_rate": 0.28,
+          "tier_stdevs": 0.114,
+          "matches": 34514
+        }
       }
     },
     "_autogen": true
@@ -868,7 +1890,21 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "C",
+          "win_rate": 49.2,
+          "pick_rate": 6.25,
+          "ban_rate": 2.77,
+          "tier_stdevs": -0.869,
+          "matches": 127924
+        }
       }
     },
     "_autogen": true
@@ -881,7 +1917,21 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 48.9,
+          "pick_rate": 1.17,
+          "ban_rate": 0.89,
+          "tier_stdevs": -0.33,
+          "matches": 23878
+        }
       }
     },
     "_autogen": true
@@ -894,7 +1944,21 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S",
+          "win_rate": 50.8,
+          "pick_rate": 3.2,
+          "ban_rate": 2.53,
+          "tier_stdevs": 0.96,
+          "matches": 65410
+        }
       }
     },
     "_autogen": true
@@ -907,7 +1971,21 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 50.8,
+          "pick_rate": 7.47,
+          "ban_rate": 11.29,
+          "tier_stdevs": 3.519,
+          "matches": 152749
+        }
       }
     },
     "_autogen": true
@@ -920,7 +1998,21 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 51.7,
+          "pick_rate": 2.36,
+          "ban_rate": 1.81,
+          "tier_stdevs": 1.372,
+          "matches": 48244
+        }
       }
     },
     "_autogen": true
@@ -933,7 +2025,21 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 50.7,
+          "pick_rate": 7.23,
+          "ban_rate": 5.0,
+          "tier_stdevs": 1.948,
+          "matches": 147864
+        }
       }
     },
     "_autogen": true
@@ -946,7 +2052,21 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 49.9,
+          "pick_rate": 1.35,
+          "ban_rate": 0.97,
+          "tier_stdevs": -0.171,
+          "matches": 27541
+        }
       }
     },
     "_autogen": true
@@ -959,7 +2079,21 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S",
+          "win_rate": 50.4,
+          "pick_rate": 5.63,
+          "ban_rate": 3.24,
+          "tier_stdevs": 0.972,
+          "matches": 115275
+        }
       }
     },
     "_autogen": true
@@ -972,7 +2106,21 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 50.3,
+          "pick_rate": 2.48,
+          "ban_rate": 1.78,
+          "tier_stdevs": 0.427,
+          "matches": 50793
+        }
       }
     },
     "_autogen": true
@@ -985,7 +2133,21 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S",
+          "win_rate": 51.4,
+          "pick_rate": 1.74,
+          "ban_rate": 0.9,
+          "tier_stdevs": 0.714,
+          "matches": 35656
+        }
       }
     },
     "_autogen": true
@@ -998,7 +2160,21 @@
       "ADC": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S",
+          "win_rate": 52.0,
+          "pick_rate": 1.68,
+          "ban_rate": 0.4,
+          "tier_stdevs": 0.571,
+          "matches": 34389
+        }
       }
     },
     "_autogen": true
@@ -1011,7 +2187,21 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 49.6,
+          "pick_rate": 4.11,
+          "ban_rate": 11.79,
+          "tier_stdevs": -0.343,
+          "matches": 84056
+        }
       }
     },
     "_autogen": true
@@ -1024,7 +2214,21 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "D",
+          "win_rate": 49.3,
+          "pick_rate": 13.31,
+          "ban_rate": 15.21,
+          "tier_stdevs": -1.688,
+          "matches": 272207
+        }
       }
     },
     "_autogen": true
@@ -1037,7 +2241,21 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 51.8,
+          "pick_rate": 7.99,
+          "ban_rate": 6.85,
+          "tier_stdevs": 4.427,
+          "matches": 163492
+        }
       }
     },
     "_autogen": true
@@ -1050,7 +2268,21 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 50.6,
+          "pick_rate": 2.67,
+          "ban_rate": 1.23,
+          "tier_stdevs": 0.412,
+          "matches": 54697
+        }
       }
     },
     "_autogen": true
@@ -1063,7 +2295,21 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 50.9,
+          "pick_rate": 5.06,
+          "ban_rate": 3.16,
+          "tier_stdevs": 1.392,
+          "matches": 103615
+        }
       }
     },
     "_autogen": true
@@ -1076,7 +2322,21 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "D",
+          "win_rate": 48.6,
+          "pick_rate": 6.34,
+          "ban_rate": 56.85,
+          "tier_stdevs": -4.223,
+          "matches": 129654
+        }
       }
     },
     "_autogen": true
@@ -1089,7 +2349,21 @@
       "ADC": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "C",
+          "win_rate": 49.6,
+          "pick_rate": 8.34,
+          "ban_rate": 1.49,
+          "tier_stdevs": -0.554,
+          "matches": 170640
+        }
       }
     },
     "_autogen": true
@@ -1102,7 +2376,21 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 50.0,
+          "pick_rate": 7.85,
+          "ban_rate": 6.46,
+          "tier_stdevs": 1.351,
+          "matches": 160687
+        }
       }
     },
     "_autogen": true
@@ -1115,7 +2403,21 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "D",
+          "win_rate": 48.5,
+          "pick_rate": 5.85,
+          "ban_rate": 2.96,
+          "tier_stdevs": -1.409,
+          "matches": 119583
+        }
       }
     },
     "_autogen": true
@@ -1129,12 +2431,40 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 50.8,
+          "pick_rate": 6.4,
+          "ban_rate": 16.92,
+          "tier_stdevs": 6.135,
+          "matches": 130918
+        }
       },
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 48.8,
+          "pick_rate": 0.64,
+          "ban_rate": 16.92,
+          "tier_stdevs": -0.3,
+          "matches": 13090
+        }
       }
     },
     "_autogen": true
@@ -1147,7 +2477,21 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 50.2,
+          "pick_rate": 5.54,
+          "ban_rate": 9.25,
+          "tier_stdevs": 1.974,
+          "matches": 113407
+        }
       }
     },
     "_autogen": true
@@ -1160,7 +2504,21 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 51.1,
+          "pick_rate": 1.68,
+          "ban_rate": 0.17,
+          "tier_stdevs": 0.208,
+          "matches": 34307
+        }
       }
     },
     "_autogen": true
@@ -1173,7 +2531,21 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 49.8,
+          "pick_rate": 5.38,
+          "ban_rate": 12.29,
+          "tier_stdevs": -0.08,
+          "matches": 110012
+        }
       }
     },
     "_autogen": true
@@ -1186,7 +2558,21 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "D",
+          "win_rate": 42.0,
+          "pick_rate": 1.56,
+          "ban_rate": 33.0,
+          "tier_stdevs": -5.659,
+          "matches": 31987
+        }
       }
     },
     "_autogen": true
@@ -1199,7 +2585,21 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 50.5,
+          "pick_rate": 5.4,
+          "ban_rate": 3.7,
+          "tier_stdevs": 1.221,
+          "matches": 110562
+        }
       }
     },
     "_autogen": true
@@ -1212,7 +2612,21 @@
       "ADC": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "C",
+          "win_rate": 49.4,
+          "pick_rate": 6.43,
+          "ban_rate": 0.61,
+          "tier_stdevs": -0.617,
+          "matches": 131640
+        }
       }
     },
     "_autogen": true
@@ -1225,7 +2639,21 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 51.4,
+          "pick_rate": 0.95,
+          "ban_rate": 2.09,
+          "tier_stdevs": 0.239,
+          "matches": 19462
+        }
       }
     },
     "_autogen": true
@@ -1238,7 +2666,21 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "D",
+          "win_rate": 49.4,
+          "pick_rate": 7.04,
+          "ban_rate": 12.3,
+          "tier_stdevs": -1.225,
+          "matches": 144009
+        }
       }
     },
     "_autogen": true
@@ -1253,17 +2695,59 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 49.9,
+          "pick_rate": 4.13,
+          "ban_rate": 14.78,
+          "tier_stdevs": 0.293,
+          "matches": 84583
+        }
       },
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 49.4,
+          "pick_rate": 0.23,
+          "ban_rate": 14.78,
+          "tier_stdevs": -0.141,
+          "matches": 4708
+        }
       },
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 50.7,
+          "pick_rate": 0.38,
+          "ban_rate": 14.78,
+          "tier_stdevs": 0.242,
+          "matches": 7743
+        }
       }
     },
     "_autogen": true
@@ -1276,7 +2760,21 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 49.2,
+          "pick_rate": 1.68,
+          "ban_rate": 22.0,
+          "tier_stdevs": -0.42,
+          "matches": 34396
+        }
       }
     },
     "_autogen": true
@@ -1289,7 +2787,21 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 50.7,
+          "pick_rate": 8.59,
+          "ban_rate": 0.98,
+          "tier_stdevs": 1.108,
+          "matches": 175708
+        }
       }
     },
     "_autogen": true
@@ -1303,12 +2815,40 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 49.7,
+          "pick_rate": 2.96,
+          "ban_rate": 9.46,
+          "tier_stdevs": -0.31,
+          "matches": 60567
+        }
       },
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 52.0,
+          "pick_rate": 2.7,
+          "ban_rate": 9.46,
+          "tier_stdevs": 2.183,
+          "matches": 55166
+        }
       }
     },
     "_autogen": true
@@ -1321,7 +2861,21 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 50.3,
+          "pick_rate": 10.16,
+          "ban_rate": 11.29,
+          "tier_stdevs": 3.075,
+          "matches": 207872
+        }
       }
     },
     "_autogen": true
@@ -1334,7 +2888,21 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 48.5,
+          "pick_rate": 1.43,
+          "ban_rate": 0.51,
+          "tier_stdevs": -0.407,
+          "matches": 29231
+        }
       }
     },
     "_autogen": true
@@ -1347,7 +2915,21 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S",
+          "win_rate": 51.1,
+          "pick_rate": 2.66,
+          "ban_rate": 1.52,
+          "tier_stdevs": 0.728,
+          "matches": 54509
+        }
       }
     },
     "_autogen": true
@@ -1360,7 +2942,21 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 39.9,
+          "pick_rate": 0.01,
+          "ban_rate": 1.67,
+          "tier_stdevs": -0.14,
+          "matches": 143
+        }
       }
     },
     "_autogen": true
@@ -1373,7 +2969,21 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 51.0,
+          "pick_rate": 6.99,
+          "ban_rate": 13.59,
+          "tier_stdevs": 4.702,
+          "matches": 142929
+        }
       }
     },
     "_autogen": true
@@ -1386,7 +2996,21 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 50.3,
+          "pick_rate": 1.83,
+          "ban_rate": 0.41,
+          "tier_stdevs": 0.048,
+          "matches": 37443
+        }
       }
     },
     "_autogen": true
@@ -1400,12 +3024,40 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 51.0,
+          "pick_rate": 2.96,
+          "ban_rate": 3.31,
+          "tier_stdevs": 1.571,
+          "matches": 60603
+        }
       },
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 49.1,
+          "pick_rate": 0.41,
+          "ban_rate": 3.31,
+          "tier_stdevs": -0.18,
+          "matches": 8416
+        }
       }
     },
     "_autogen": true
@@ -1418,7 +3070,21 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "D",
+          "win_rate": 47.1,
+          "pick_rate": 3.08,
+          "ban_rate": 0.41,
+          "tier_stdevs": -1.55,
+          "matches": 62969
+        }
       }
     },
     "_autogen": true
@@ -1431,7 +3097,21 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S",
+          "win_rate": 51.2,
+          "pick_rate": 3.44,
+          "ban_rate": 0.52,
+          "tier_stdevs": 0.918,
+          "matches": 70463
+        }
       }
     },
     "_autogen": true
@@ -1444,7 +3124,21 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 51.2,
+          "pick_rate": 0.85,
+          "ban_rate": 2.45,
+          "tier_stdevs": 0.103,
+          "matches": 17350
+        }
       }
     },
     "_autogen": true
@@ -1459,17 +3153,59 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S",
+          "win_rate": 51.0,
+          "pick_rate": 1.23,
+          "ban_rate": 7.73,
+          "tier_stdevs": 0.782,
+          "matches": 25175
+        }
       },
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 49.6,
+          "pick_rate": 0.65,
+          "ban_rate": 7.73,
+          "tier_stdevs": -0.152,
+          "matches": 13236
+        }
       },
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 52.1,
+          "pick_rate": 3.63,
+          "ban_rate": 7.73,
+          "tier_stdevs": 2.861,
+          "matches": 74175
+        }
       }
     },
     "_autogen": true
@@ -1482,7 +3218,21 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "C",
+          "win_rate": 49.5,
+          "pick_rate": 7.59,
+          "ban_rate": 24.31,
+          "tier_stdevs": -0.515,
+          "matches": 155235
+        }
       }
     },
     "_autogen": true
@@ -1495,7 +3245,21 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 49.7,
+          "pick_rate": 2.28,
+          "ban_rate": 2.45,
+          "tier_stdevs": -0.2,
+          "matches": 46678
+        }
       }
     },
     "_autogen": true
@@ -1508,7 +3272,21 @@
       "ADC": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 46.9,
+          "pick_rate": 0.04,
+          "ban_rate": 0.93,
+          "tier_stdevs": -0.088,
+          "matches": 801
+        }
       }
     },
     "_autogen": true
@@ -1521,7 +3299,21 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S",
+          "win_rate": 51.2,
+          "pick_rate": 3.18,
+          "ban_rate": 0.23,
+          "tier_stdevs": 0.529,
+          "matches": 64992
+        }
       }
     },
     "_autogen": true
@@ -1534,7 +3326,21 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 51.8,
+          "pick_rate": 1.36,
+          "ban_rate": 2.98,
+          "tier_stdevs": 1.144,
+          "matches": 27910
+        }
       }
     },
     "_autogen": true
@@ -1547,7 +3353,21 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S",
+          "win_rate": 52.1,
+          "pick_rate": 1.4,
+          "ban_rate": 0.67,
+          "tier_stdevs": 0.53,
+          "matches": 28624
+        }
       }
     },
     "_autogen": true
@@ -1560,7 +3380,21 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 52.3,
+          "pick_rate": 3.91,
+          "ban_rate": 0.99,
+          "tier_stdevs": 1.594,
+          "matches": 80083
+        }
       }
     },
     "_autogen": true
@@ -1573,7 +3407,21 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 50.4,
+          "pick_rate": 0.86,
+          "ban_rate": 0.11,
+          "tier_stdevs": -0.0,
+          "matches": 17508
+        }
       }
     },
     "_autogen": true
@@ -1586,7 +3434,21 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 49.9,
+          "pick_rate": 5.7,
+          "ban_rate": 4.11,
+          "tier_stdevs": -0.2,
+          "matches": 116656
+        }
       }
     },
     "_autogen": true
@@ -1600,12 +3462,40 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "D",
+          "win_rate": 46.3,
+          "pick_rate": 4.79,
+          "ban_rate": 7.22,
+          "tier_stdevs": -4.131,
+          "matches": 97971
+        }
       },
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "C",
+          "win_rate": 46.3,
+          "pick_rate": 0.37,
+          "ban_rate": 7.22,
+          "tier_stdevs": -0.636,
+          "matches": 7586
+        }
       }
     },
     "_autogen": true
@@ -1618,7 +3508,21 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "C",
+          "win_rate": 49.3,
+          "pick_rate": 2.74,
+          "ban_rate": 2.92,
+          "tier_stdevs": -0.62,
+          "matches": 56003
+        }
       }
     },
     "_autogen": true
@@ -1631,7 +3535,21 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "C",
+          "win_rate": 48.4,
+          "pick_rate": 1.62,
+          "ban_rate": 0.8,
+          "tier_stdevs": -0.792,
+          "matches": 33151
+        }
       }
     },
     "_autogen": true
@@ -1644,7 +3562,21 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "D",
+          "win_rate": 47.4,
+          "pick_rate": 3.01,
+          "ban_rate": 0.5,
+          "tier_stdevs": -1.367,
+          "matches": 61540
+        }
       }
     },
     "_autogen": true
@@ -1657,7 +3589,21 @@
       "ADC": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 50.4,
+          "pick_rate": 4.05,
+          "ban_rate": 4.95,
+          "tier_stdevs": 1.491,
+          "matches": 82848
+        }
       }
     },
     "_autogen": true
@@ -1670,7 +3616,21 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 50.5,
+          "pick_rate": 1.61,
+          "ban_rate": 0.16,
+          "tier_stdevs": 0.027,
+          "matches": 33017
+        }
       }
     },
     "_autogen": true
@@ -1683,7 +3643,21 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 51.1,
+          "pick_rate": 5.93,
+          "ban_rate": 5.24,
+          "tier_stdevs": 1.931,
+          "matches": 121259
+        }
       }
     },
     "_autogen": true
@@ -1697,12 +3671,40 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 50.0,
+          "pick_rate": 7.7,
+          "ban_rate": 13.18,
+          "tier_stdevs": 1.918,
+          "matches": 157526
+        }
       },
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 46.6,
+          "pick_rate": 0.22,
+          "ban_rate": 13.18,
+          "tier_stdevs": -0.293,
+          "matches": 4515
+        }
       }
     },
     "_autogen": true
@@ -1715,7 +3717,21 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 50.7,
+          "pick_rate": 5.58,
+          "ban_rate": 2.45,
+          "tier_stdevs": 1.457,
+          "matches": 114250
+        }
       }
     },
     "_autogen": true
@@ -1729,12 +3745,40 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 50.6,
+          "pick_rate": 4.59,
+          "ban_rate": 16.46,
+          "tier_stdevs": 3.382,
+          "matches": 93924
+        }
       },
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "C",
+          "win_rate": 48.9,
+          "pick_rate": 1.58,
+          "ban_rate": 16.46,
+          "tier_stdevs": -0.523,
+          "matches": 32344
+        }
       }
     },
     "_autogen": true
@@ -1747,7 +3791,21 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S",
+          "win_rate": 51.0,
+          "pick_rate": 3.76,
+          "ban_rate": 1.13,
+          "tier_stdevs": 0.912,
+          "matches": 76935
+        }
       }
     },
     "_autogen": true
@@ -1760,7 +3818,21 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 51.3,
+          "pick_rate": 4.12,
+          "ban_rate": 3.07,
+          "tier_stdevs": 1.565,
+          "matches": 84187
+        }
       }
     },
     "_autogen": true
@@ -1773,7 +3845,21 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 52.0,
+          "pick_rate": 2.72,
+          "ban_rate": 1.1,
+          "tier_stdevs": 1.456,
+          "matches": 55731
+        }
       }
     },
     "_autogen": true
@@ -1787,12 +3873,40 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "D",
+          "win_rate": 48.8,
+          "pick_rate": 3.3,
+          "ban_rate": 0.72,
+          "tier_stdevs": -1.025,
+          "matches": 67435
+        }
       },
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 50.4,
+          "pick_rate": 0.76,
+          "ban_rate": 0.72,
+          "tier_stdevs": -0.046,
+          "matches": 15591
+        }
       }
     },
     "_autogen": true
@@ -1805,7 +3919,21 @@
       "ADC": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S",
+          "win_rate": 50.4,
+          "pick_rate": 4.23,
+          "ban_rate": 1.4,
+          "tier_stdevs": 0.568,
+          "matches": 86545
+        }
       }
     },
     "_autogen": true
@@ -1818,7 +3946,21 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 49.2,
+          "pick_rate": 1.1,
+          "ban_rate": 0.22,
+          "tier_stdevs": -0.249,
+          "matches": 22494
+        }
       }
     },
     "_autogen": true
@@ -1831,7 +3973,21 @@
       "ADC": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 50.0,
+          "pick_rate": 3.95,
+          "ban_rate": 2.31,
+          "tier_stdevs": -0.016,
+          "matches": 80755
+        }
       }
     },
     "_autogen": true
@@ -1844,7 +4000,21 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S",
+          "win_rate": 51.6,
+          "pick_rate": 3.25,
+          "ban_rate": 0.27,
+          "tier_stdevs": 0.749,
+          "matches": 66527
+        }
       }
     },
     "_autogen": true
@@ -1857,7 +4027,21 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 50.9,
+          "pick_rate": 4.49,
+          "ban_rate": 1.85,
+          "tier_stdevs": 1.018,
+          "matches": 91901
+        }
       }
     },
     "_autogen": true
@@ -1870,7 +4054,21 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "D",
+          "win_rate": 47.3,
+          "pick_rate": 2.52,
+          "ban_rate": 1.6,
+          "tier_stdevs": -1.194,
+          "matches": 51577
+        }
       }
     },
     "_autogen": true
@@ -1883,7 +4081,21 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "C",
+          "win_rate": 49.6,
+          "pick_rate": 8.08,
+          "ban_rate": 17.76,
+          "tier_stdevs": -0.537,
+          "matches": 165254
+        }
       }
     },
     "_autogen": true
@@ -1897,12 +4109,40 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 50.7,
+          "pick_rate": 7.98,
+          "ban_rate": 12.68,
+          "tier_stdevs": 2.786,
+          "matches": 163262
+        }
       },
       "ADC": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 49.9,
+          "pick_rate": 5.31,
+          "ban_rate": 12.68,
+          "tier_stdevs": 0.018,
+          "matches": 108702
+        }
       }
     },
     "_autogen": true
@@ -1915,7 +4155,21 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 49.7,
+          "pick_rate": 2.3,
+          "ban_rate": 1.95,
+          "tier_stdevs": -0.164,
+          "matches": 47139
+        }
       }
     },
     "_autogen": true
@@ -1929,12 +4183,40 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 51.2,
+          "pick_rate": 0.73,
+          "ban_rate": 0.36,
+          "tier_stdevs": 0.043,
+          "matches": 14895
+        }
       },
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 50.0,
+          "pick_rate": 1.44,
+          "ban_rate": 0.36,
+          "tier_stdevs": -0.074,
+          "matches": 29532
+        }
       }
     },
     "_autogen": true
@@ -1948,12 +4230,40 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 50.3,
+          "pick_rate": 1.98,
+          "ban_rate": 6.85,
+          "tier_stdevs": 0.449,
+          "matches": 40489
+        }
       },
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 51.0,
+          "pick_rate": 4.76,
+          "ban_rate": 6.85,
+          "tier_stdevs": 1.918,
+          "matches": 97354
+        }
       }
     },
     "_autogen": true
@@ -1966,7 +4276,21 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S",
+          "win_rate": 52.6,
+          "pick_rate": 1.4,
+          "ban_rate": 0.33,
+          "tier_stdevs": 0.573,
+          "matches": 28600
+        }
       }
     },
     "_autogen": true
@@ -1979,7 +4303,21 @@
       "ADC": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 47.9,
+          "pick_rate": 0.12,
+          "ban_rate": 6.03,
+          "tier_stdevs": -0.125,
+          "matches": 2495
+        }
       }
     },
     "_autogen": true
@@ -1992,7 +4330,21 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 52.0,
+          "pick_rate": 13.21,
+          "ban_rate": 8.25,
+          "tier_stdevs": 6.615,
+          "matches": 270214
+        }
       }
     },
     "_autogen": true
@@ -2006,12 +4358,40 @@
       "ADC": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 51.5,
+          "pick_rate": 6.5,
+          "ban_rate": 2.24,
+          "tier_stdevs": 2.116,
+          "matches": 132951
+        }
       },
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 47.5,
+          "pick_rate": 0.8,
+          "ban_rate": 2.24,
+          "tier_stdevs": -0.47,
+          "matches": 16464
+        }
       }
     },
     "_autogen": true
@@ -2024,7 +4404,21 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "C",
+          "win_rate": 48.2,
+          "pick_rate": 1.39,
+          "ban_rate": 0.3,
+          "tier_stdevs": -0.742,
+          "matches": 28407
+        }
       }
     },
     "_autogen": true
@@ -2037,7 +4431,21 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 50.8,
+          "pick_rate": 3.49,
+          "ban_rate": 2.74,
+          "tier_stdevs": 1.288,
+          "matches": 71300
+        }
       }
     },
     "_autogen": true
@@ -2050,7 +4458,21 @@
       "ADC": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 48.0,
+          "pick_rate": 0.18,
+          "ban_rate": 1.11,
+          "tier_stdevs": -0.127,
+          "matches": 3680
+        }
       }
     },
     "_autogen": true
@@ -2064,12 +4486,40 @@
       "ADC": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 50.5,
+          "pick_rate": 4.35,
+          "ban_rate": 4.44,
+          "tier_stdevs": 1.321,
+          "matches": 89014
+        }
       },
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 38.9,
+          "pick_rate": 0.12,
+          "ban_rate": 4.44,
+          "tier_stdevs": -0.398,
+          "matches": 2532
+        }
       }
     },
     "_autogen": true
@@ -2082,7 +4532,21 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 51.2,
+          "pick_rate": 2.11,
+          "ban_rate": 1.05,
+          "tier_stdevs": 0.484,
+          "matches": 43093
+        }
       }
     },
     "_autogen": true
@@ -2095,7 +4559,21 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S",
+          "win_rate": 50.8,
+          "pick_rate": 2.52,
+          "ban_rate": 0.88,
+          "tier_stdevs": 0.586,
+          "matches": 51550
+        }
       }
     },
     "_autogen": true
@@ -2108,7 +4586,21 @@
       "ADC": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "C",
+          "win_rate": 47.4,
+          "pick_rate": 1.93,
+          "ban_rate": 0.92,
+          "tier_stdevs": -0.931,
+          "matches": 39391
+        }
       }
     },
     "_autogen": true
@@ -2122,12 +4614,40 @@
       "ADC": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 50.0,
+          "pick_rate": 4.55,
+          "ban_rate": 11.61,
+          "tier_stdevs": 0.17,
+          "matches": 93122
+        }
       },
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 49.7,
+          "pick_rate": 3.47,
+          "ban_rate": 11.61,
+          "tier_stdevs": -0.279,
+          "matches": 70978
+        }
       }
     },
     "_autogen": true
@@ -2141,12 +4661,40 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S",
+          "win_rate": 50.8,
+          "pick_rate": 3.63,
+          "ban_rate": 1.31,
+          "tier_stdevs": 0.51,
+          "matches": 74216
+        }
       },
       "ADC": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S",
+          "win_rate": 52.4,
+          "pick_rate": 2.15,
+          "ban_rate": 1.31,
+          "tier_stdevs": 0.895,
+          "matches": 43919
+        }
       }
     },
     "_autogen": true
@@ -2159,7 +4707,21 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 49.8,
+          "pick_rate": 2.87,
+          "ban_rate": 2.03,
+          "tier_stdevs": -0.156,
+          "matches": 58685
+        }
       }
     },
     "_autogen": true
@@ -2172,7 +4734,21 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 51.7,
+          "pick_rate": 2.73,
+          "ban_rate": 3.04,
+          "tier_stdevs": 1.572,
+          "matches": 55801
+        }
       }
     },
     "_autogen": true
@@ -2185,7 +4761,21 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 50.1,
+          "pick_rate": 6.04,
+          "ban_rate": 1.77,
+          "tier_stdevs": 0.353,
+          "matches": 123513
+        }
       }
     },
     "_autogen": true
@@ -2198,7 +4788,21 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "C",
+          "win_rate": 49.5,
+          "pick_rate": 10.69,
+          "ban_rate": 8.1,
+          "tier_stdevs": -0.968,
+          "matches": 218710
+        }
       }
     },
     "_autogen": true
@@ -2212,12 +4816,40 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 50.7,
+          "pick_rate": 9.35,
+          "ban_rate": 13.64,
+          "tier_stdevs": 3.265,
+          "matches": 191235
+        }
       },
       "ADC": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 51.7,
+          "pick_rate": 5.33,
+          "ban_rate": 13.64,
+          "tier_stdevs": 3.138,
+          "matches": 109108
+        }
       }
     },
     "_autogen": true
@@ -2230,7 +4862,21 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 51.5,
+          "pick_rate": 4.32,
+          "ban_rate": 6.68,
+          "tier_stdevs": 2.308,
+          "matches": 88364
+        }
       }
     },
     "_autogen": true
@@ -2244,12 +4890,40 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "C",
+          "win_rate": 48.9,
+          "pick_rate": 2.89,
+          "ban_rate": 1.34,
+          "tier_stdevs": -0.923,
+          "matches": 59171
+        }
       },
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 49.3,
+          "pick_rate": 0.88,
+          "ban_rate": 1.34,
+          "tier_stdevs": -0.213,
+          "matches": 18099
+        }
       }
     },
     "_autogen": true
@@ -2262,7 +4936,21 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S",
+          "win_rate": 51.4,
+          "pick_rate": 2.93,
+          "ban_rate": 1.5,
+          "tier_stdevs": 0.792,
+          "matches": 59849
+        }
       }
     },
     "_autogen": true
@@ -2275,7 +4963,21 @@
       "ADC": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 51.8,
+          "pick_rate": 3.61,
+          "ban_rate": 0.53,
+          "tier_stdevs": 1.149,
+          "matches": 73882
+        }
       }
     },
     "_autogen": true
@@ -2289,12 +4991,40 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 51.5,
+          "pick_rate": 4.38,
+          "ban_rate": 21.25,
+          "tier_stdevs": 3.639,
+          "matches": 89586
+        }
       },
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "D",
+          "win_rate": 48.3,
+          "pick_rate": 2.68,
+          "ban_rate": 21.25,
+          "tier_stdevs": -1.165,
+          "matches": 54809
+        }
       }
     },
     "_autogen": true
@@ -2307,7 +5037,21 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 50.2,
+          "pick_rate": 3.37,
+          "ban_rate": 0.86,
+          "tier_stdevs": 0.148,
+          "matches": 68947
+        }
       }
     },
     "_autogen": true
@@ -2321,12 +5065,40 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "D",
+          "win_rate": 48.2,
+          "pick_rate": 6.3,
+          "ban_rate": 6.3,
+          "tier_stdevs": -2.141,
+          "matches": 128804
+        }
       },
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 50.0,
+          "pick_rate": 7.25,
+          "ban_rate": 6.3,
+          "tier_stdevs": -0.065,
+          "matches": 148351
+        }
       }
     },
     "_autogen": true
@@ -2339,7 +5111,21 @@
       "Top": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 50.0,
+          "pick_rate": 3.52,
+          "ban_rate": 6.79,
+          "tier_stdevs": 0.095,
+          "matches": 71932
+        }
       }
     },
     "_autogen": true
@@ -2352,7 +5138,21 @@
       "ADC": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 49.6,
+          "pick_rate": 5.37,
+          "ban_rate": 0.83,
+          "tier_stdevs": -0.408,
+          "matches": 109833
+        }
       }
     },
     "_autogen": true
@@ -2365,7 +5165,21 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "D",
+          "win_rate": 47.9,
+          "pick_rate": 4.88,
+          "ban_rate": 5.24,
+          "tier_stdevs": -2.106,
+          "matches": 99880
+        }
       }
     },
     "_autogen": true
@@ -2378,7 +5192,21 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 53.6,
+          "pick_rate": 0.1,
+          "ban_rate": 1.47,
+          "tier_stdevs": -0.049,
+          "matches": 2056
+        }
       }
     },
     "_autogen": true
@@ -2391,7 +5219,21 @@
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 51.0,
+          "pick_rate": 2.56,
+          "ban_rate": 1.06,
+          "tier_stdevs": 0.495,
+          "matches": 52419
+        }
       }
     },
     "_autogen": true
@@ -2405,12 +5247,40 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 50.5,
+          "pick_rate": 8.7,
+          "ban_rate": 21.1,
+          "tier_stdevs": 4.641,
+          "matches": 177975
+        }
       },
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "D",
+          "win_rate": 47.7,
+          "pick_rate": 2.45,
+          "ban_rate": 21.1,
+          "tier_stdevs": -1.46,
+          "matches": 50051
+        }
       }
     },
     "_autogen": true
@@ -2423,7 +5293,21 @@
       "ADC": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S",
+          "win_rate": 51.4,
+          "pick_rate": 3.18,
+          "ban_rate": 0.31,
+          "tier_stdevs": 0.693,
+          "matches": 65079
+        }
       }
     },
     "_autogen": true
@@ -2436,7 +5320,21 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 49.2,
+          "pick_rate": 0.68,
+          "ban_rate": 5.94,
+          "tier_stdevs": -0.215,
+          "matches": 13820
+        }
       }
     },
     "_autogen": true
@@ -2449,7 +5347,21 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S+",
+          "win_rate": 51.8,
+          "pick_rate": 3.06,
+          "ban_rate": 1.5,
+          "tier_stdevs": 1.143,
+          "matches": 62685
+        }
       }
     },
     "_autogen": true
@@ -2462,7 +5374,21 @@
       "Mid": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "S",
+          "win_rate": 50.7,
+          "pick_rate": 2.74,
+          "ban_rate": 3.38,
+          "tier_stdevs": 0.866,
+          "matches": 56072
+        }
       }
     },
     "_autogen": true
@@ -2476,12 +5402,40 @@
       "Support": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "B",
+          "win_rate": 49.5,
+          "pick_rate": 2.17,
+          "ban_rate": 1.75,
+          "tier_stdevs": -0.231,
+          "matches": 44458
+        }
       },
       "Jungle": {
         "threat": 3,
         "core_builds": [],
-        "tactics": ""
+        "tactics": "",
+        "fetched_meta": {
+          "source": "U.GG",
+          "patch": "16.15",
+          "region": "world",
+          "tier_source": "emerald_plus",
+          "queue": "ranked_solo_5x5",
+          "fetched_at": "2026-08-10",
+          "tier": "A",
+          "win_rate": 50.8,
+          "pick_rate": 0.7,
+          "ban_rate": 1.75,
+          "tier_stdevs": 0.064,
+          "matches": 14392
+        }
       }
     },
     "_autogen": true

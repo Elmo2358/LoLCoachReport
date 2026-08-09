@@ -200,9 +200,9 @@ def main():
     for name, detail in sorted(real.items()):
         roles = guess_roles(name, detail.get("tags", []))
         old_mi = (meta.get(name) or {}).get("meta_info") or {}
-        # キュレーション済み（tactics or core_builds を持つ）ロールだけ保持
+        # キュレーション済み（tactics/core_builds）または fetched_meta を持つロールは保持
         keep = {r: mi for r, mi in old_mi.items()
-                if mi.get("tactics") or mi.get("core_builds")}
+                if mi.get("tactics") or mi.get("core_builds") or mi.get("fetched_meta")}
         new_mi = {r: keep.get(r) or _template() for r in roles}
         curated = any(mi.get("tactics") or mi.get("core_builds") for mi in new_mi.values())
         entry = {"roles": roles, "meta_info": new_mi}

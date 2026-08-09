@@ -32,6 +32,11 @@ def ddragon_cache_dir():
     return _subdir("ddragon_cache")
 
 
+def ugg_cache_dir():
+    """U.GG 取得統計のキャッシュ先（meta_loader.py が使用）。"""
+    return _subdir("ugg_cache")
+
+
 def matches_dir():
     return _subdir("matches")
 

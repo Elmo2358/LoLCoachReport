@@ -178,6 +178,41 @@ def _render_builds(builds, valid_items):
     return " / ".join(parts)
 
 
+# fetched_meta の tier_source（U.GG内部キー）-> 表示ラベル
+_TIER_SOURCE_LABEL = {
+    "platinum_plus": "Platinum+", "emerald_plus": "Emerald+",
+    "diamond_plus": "Diamond+", "diamond_two_plus": "Diamond 2+",
+    "master_plus": "Master+", "all": "All", "challenger": "Challenger",
+}
+
+
+def _render_fetched_meta(fm):
+    """fetched_meta（U.GG 客観統計）-> 1行のMD文字列。無ければ None。
+
+    手動メタ（ビルド/対策/脅威度）とは明確に区別される「外部データ」として出力する。
+    LLM が主観(手動)と客観(外部)を混同しないよう、見出しで出典・パッチ・tierを明示。
+    """
+    if not fm:
+        return None
+    source = fm.get("source", "U.GG")
+    patch = fm.get("patch") or "?"
+    tier_src = _TIER_SOURCE_LABEL.get(fm.get("tier_source") or "",
+                                      fm.get("tier_source") or "?")
+    parts = []
+    if fm.get("tier"):
+        parts.append(f"Tier: **{fm['tier']}**")
+    if fm.get("win_rate") is not None:
+        parts.append(f"勝率: **{fm['win_rate']}%**")
+    if fm.get("pick_rate") is not None:
+        parts.append(f"Pick率: **{fm['pick_rate']}%**")
+    if fm.get("ban_rate") is not None:
+        parts.append(f"Ban率: **{fm['ban_rate']}%**")
+    matches = fm.get("matches")
+    suffix = f" (対象試合数: {matches:,})" if isinstance(matches, int) else ""
+    return (f"- **【パッチ統計メタ ({source} Patch {patch} {tier_src})】:** "
+            + " ｜ ".join(parts) + suffix)
+
+
 def _render_champion(name, info, role, dd, valid_items):
     """1チャンピオンのMDブロック。-> (block_text, warning or None)。"""
     detail = dd.detail(name)
@@ -232,6 +267,9 @@ def _render_champion(name, info, role, dd, valid_items):
         L.append("- " + " ｜ ".join(extra))
     if ri.get("power_spikes"):
         L.append("- **パワースパイク:** " + ", ".join(ri["power_spikes"]))
+    fm_line = _render_fetched_meta(ri.get("fetched_meta"))
+    if fm_line:
+        L.append(fm_line)
     if threat is not None:
         L.append(f"- **脅威度:** {_stars(threat)}")
     tac = ri.get("tactics")
@@ -248,7 +286,7 @@ def _render_file(role, dd, champs, valid_items, today):
     L.append(f"# {ROLE_JA[role]}レーン チャンピオン対策（フィドルスティックス視点）")
     L.append("")
     L.append(f"> **パッチ:** {dd.version} ｜ **生成日:** {today} ｜ "
-             "データ元: Riot Data Dragon + 手動メタ(champion_meta_mapping.json)")
+             "データ元: Riot Data Dragon + 手動メタ + U.GG統計(fetched_meta)")
     L.append(">")
     L.append("> **凡例（LLM向け）:**")
     L.append("> - **W中断CC【有】/【無】:** 敵スキル説明文から、フィドルの W(ドレイン:チャネリング) を中断させるCC")
@@ -256,6 +294,8 @@ def _render_file(role, dd, champs, valid_items, today):
     L.append("> - **移動CC【有】/【無】:** スネア/スロー等、Wは止まらないが位置取りを制限するCC。")
     L.append("> - **脅威度:** ★1（楽）〜 ★5（非常に厳しい）。フィドル視点。")
     L.append("> - `[CD]` `[射程]` は DDragon の実数値。メタ情報（ビルド・対策）は手動管理。")
+    L.append("> - **【パッチ統計メタ（外部データ）】:** U.GG（外部統計サイト）から自動取得した客観データ。")
+    L.append(">   手動メタ（ビルド・対策・脅威度）とは独立。LLMのエコーチェンバー（出力循環参照）防止用。")
     L.append("")
     L.append("---")
     L.append("")

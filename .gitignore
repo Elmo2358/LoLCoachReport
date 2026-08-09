@@ -10,6 +10,7 @@ venv/
 
 # Generated data
 data/ddragon_cache/
+data/ugg_cache/
 data/matches/
 data/reports/
 
