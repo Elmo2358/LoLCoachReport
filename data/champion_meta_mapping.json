@@ -22,7 +22,8 @@
   "Yasuo": {
     "roles": [
       "Mid",
-      "Top"
+      "Top",
+      "ADC"
     ],
     "meta_info": {
       "Mid": {
@@ -39,24 +40,39 @@
           ]
         ],
         "tactics": "風の壁(W)はフィドルのQ・E（投射物）を無効化するが、W(ドレイン)はチャネリングのため壁では止まらない。脅威はQ3(竜巻)とRのノックアップ＝いずれもW中断CC（実データでQ/Rにノックアップ検出済み）。ドレイン詠唱は竜巻を見てから、あるいは敵のQスタックが低い時に後出しする。Eでミニオンを透過して接近されるため距離管理が命。風の壁を誘い抜けてからQ/Eで応戦する。"
+      },
+      "Top": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
+      },
+      "ADC": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
       }
     }
   },
   "Aatrox": {
-    "_autogen": true,
     "roles": [
-      "Top"
+      "Top",
+      "Jungle"
     ],
     "meta_info": {
       "Top": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
+      },
+      "Jungle": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Ahri": {
-    "_autogen": true,
     "roles": [
       "Mid"
     ],
@@ -66,10 +82,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Akali": {
-    "_autogen": true,
     "roles": [
       "Mid"
     ],
@@ -79,23 +95,29 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Akshan": {
-    "_autogen": true,
     "roles": [
+      "Mid",
       "ADC"
     ],
     "meta_info": {
+      "Mid": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
+      },
       "ADC": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Alistar": {
-    "_autogen": true,
     "roles": [
       "Support"
     ],
@@ -105,10 +127,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Ambessa": {
-    "_autogen": true,
     "roles": [
       "Mid"
     ],
@@ -118,10 +140,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Amumu": {
-    "_autogen": true,
     "roles": [
       "Jungle"
     ],
@@ -131,10 +153,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Anivia": {
-    "_autogen": true,
     "roles": [
       "Mid"
     ],
@@ -144,23 +166,23 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Annie": {
-    "_autogen": true,
     "roles": [
-      "Support"
+      "Mid"
     ],
     "meta_info": {
-      "Support": {
+      "Mid": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Aphelios": {
-    "_autogen": true,
     "roles": [
       "ADC"
     ],
@@ -170,23 +192,23 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Ashe": {
-    "_autogen": true,
     "roles": [
-      "Support"
+      "ADC"
     ],
     "meta_info": {
-      "Support": {
+      "ADC": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "AurelionSol": {
-    "_autogen": true,
     "roles": [
       "Mid"
     ],
@@ -196,23 +218,23 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Azir": {
-    "_autogen": true,
     "roles": [
-      "ADC"
+      "Mid"
     ],
     "meta_info": {
-      "ADC": {
+      "Mid": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Bard": {
-    "_autogen": true,
     "roles": [
       "Support"
     ],
@@ -222,10 +244,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Belveth": {
-    "_autogen": true,
     "roles": [
       "Jungle"
     ],
@@ -235,10 +257,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Blitzcrank": {
-    "_autogen": true,
     "roles": [
       "Support"
     ],
@@ -248,10 +270,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Brand": {
-    "_autogen": true,
     "roles": [
       "Support"
     ],
@@ -261,10 +283,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Braum": {
-    "_autogen": true,
     "roles": [
       "Support"
     ],
@@ -274,10 +296,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Briar": {
-    "_autogen": true,
     "roles": [
       "Jungle"
     ],
@@ -287,10 +309,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Caitlyn": {
-    "_autogen": true,
     "roles": [
       "ADC"
     ],
@@ -300,23 +322,29 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Camille": {
-    "_autogen": true,
     "roles": [
-      "Mid"
+      "Top",
+      "Support"
     ],
     "meta_info": {
-      "Mid": {
+      "Top": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
+      },
+      "Support": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Cassiopeia": {
-    "_autogen": true,
     "roles": [
       "Mid"
     ],
@@ -326,49 +354,67 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Chogath": {
-    "_autogen": true,
     "roles": [
+      "Top",
       "Mid"
     ],
     "meta_info": {
+      "Top": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
+      },
       "Mid": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Corki": {
-    "_autogen": true,
     "roles": [
-      "Mid"
+      "Mid",
+      "ADC"
     ],
     "meta_info": {
       "Mid": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
+      },
+      "ADC": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Darius": {
-    "_autogen": true,
     "roles": [
-      "Top"
+      "Top",
+      "Jungle"
     ],
     "meta_info": {
       "Top": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
+      },
+      "Jungle": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Diana": {
-    "_autogen": true,
     "roles": [
       "Jungle"
     ],
@@ -378,10 +424,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "DrMundo": {
-    "_autogen": true,
     "roles": [
       "Top"
     ],
@@ -391,10 +437,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Draven": {
-    "_autogen": true,
     "roles": [
       "ADC"
     ],
@@ -404,10 +450,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Ekko": {
-    "_autogen": true,
     "roles": [
       "Mid"
     ],
@@ -417,10 +463,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Elise": {
-    "_autogen": true,
     "roles": [
       "Jungle"
     ],
@@ -430,23 +476,23 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Evelynn": {
-    "_autogen": true,
     "roles": [
-      "Mid"
+      "Jungle"
     ],
     "meta_info": {
-      "Mid": {
+      "Jungle": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Ezreal": {
-    "_autogen": true,
     "roles": [
       "ADC"
     ],
@@ -456,36 +502,42 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Fiddlesticks": {
-    "_autogen": true,
     "roles": [
-      "Jungle"
+      "Jungle",
+      "Mid"
     ],
     "meta_info": {
       "Jungle": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
+      },
+      "Mid": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Fiora": {
-    "_autogen": true,
     "roles": [
-      "Mid"
+      "Top"
     ],
     "meta_info": {
-      "Mid": {
+      "Top": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Fizz": {
-    "_autogen": true,
     "roles": [
       "Mid"
     ],
@@ -495,10 +547,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Galio": {
-    "_autogen": true,
     "roles": [
       "Mid"
     ],
@@ -508,23 +560,29 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Gangplank": {
-    "_autogen": true,
     "roles": [
-      "Top"
+      "Top",
+      "Mid"
     ],
     "meta_info": {
       "Top": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
+      },
+      "Mid": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Garen": {
-    "_autogen": true,
     "roles": [
       "Top"
     ],
@@ -534,10 +592,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Gnar": {
-    "_autogen": true,
     "roles": [
       "Top"
     ],
@@ -547,10 +605,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Gragas": {
-    "_autogen": true,
     "roles": [
       "Mid"
     ],
@@ -560,10 +618,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Graves": {
-    "_autogen": true,
     "roles": [
       "Jungle"
     ],
@@ -573,23 +631,29 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Gwen": {
-    "_autogen": true,
     "roles": [
-      "Top"
+      "Top",
+      "Jungle"
     ],
     "meta_info": {
       "Top": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
+      },
+      "Jungle": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Hecarim": {
-    "_autogen": true,
     "roles": [
       "Jungle"
     ],
@@ -599,10 +663,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Heimerdinger": {
-    "_autogen": true,
     "roles": [
       "Support"
     ],
@@ -612,10 +676,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Hwei": {
-    "_autogen": true,
     "roles": [
       "Support"
     ],
@@ -625,10 +689,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Illaoi": {
-    "_autogen": true,
     "roles": [
       "Top"
     ],
@@ -638,10 +702,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Irelia": {
-    "_autogen": true,
     "roles": [
       "Mid"
     ],
@@ -651,10 +715,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Ivern": {
-    "_autogen": true,
     "roles": [
       "Jungle"
     ],
@@ -664,10 +728,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Janna": {
-    "_autogen": true,
     "roles": [
       "Support"
     ],
@@ -677,10 +741,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "JarvanIV": {
-    "_autogen": true,
     "roles": [
       "Jungle"
     ],
@@ -690,36 +754,48 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Jax": {
-    "_autogen": true,
     "roles": [
-      "Top"
+      "Top",
+      "Jungle"
     ],
     "meta_info": {
       "Top": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
+      },
+      "Jungle": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Jayce": {
-    "_autogen": true,
     "roles": [
-      "ADC"
+      "Top",
+      "Mid"
     ],
     "meta_info": {
-      "ADC": {
+      "Top": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
+      },
+      "Mid": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Jhin": {
-    "_autogen": true,
     "roles": [
       "ADC"
     ],
@@ -729,10 +805,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Jinx": {
-    "_autogen": true,
     "roles": [
       "ADC"
     ],
@@ -742,10 +818,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "KSante": {
-    "_autogen": true,
     "roles": [
       "Top"
     ],
@@ -755,10 +831,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Kaisa": {
-    "_autogen": true,
     "roles": [
       "ADC"
     ],
@@ -768,10 +844,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Kalista": {
-    "_autogen": true,
     "roles": [
       "ADC"
     ],
@@ -781,10 +857,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Karma": {
-    "_autogen": true,
     "roles": [
       "Support"
     ],
@@ -794,10 +870,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Karthus": {
-    "_autogen": true,
     "roles": [
       "Jungle"
     ],
@@ -807,10 +883,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Kassadin": {
-    "_autogen": true,
     "roles": [
       "Mid"
     ],
@@ -820,10 +896,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Katarina": {
-    "_autogen": true,
     "roles": [
       "Mid"
     ],
@@ -833,23 +909,23 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Kayle": {
-    "_autogen": true,
     "roles": [
-      "ADC"
+      "Top"
     ],
     "meta_info": {
-      "ADC": {
+      "Top": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Kayn": {
-    "_autogen": true,
     "roles": [
       "Jungle"
     ],
@@ -859,23 +935,23 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Kennen": {
-    "_autogen": true,
     "roles": [
-      "Mid"
+      "Top"
     ],
     "meta_info": {
-      "Mid": {
+      "Top": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Khazix": {
-    "_autogen": true,
     "roles": [
       "Jungle"
     ],
@@ -885,10 +961,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Kindred": {
-    "_autogen": true,
     "roles": [
       "Jungle"
     ],
@@ -898,10 +974,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Kled": {
-    "_autogen": true,
     "roles": [
       "Top"
     ],
@@ -911,10 +987,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "KogMaw": {
-    "_autogen": true,
     "roles": [
       "ADC"
     ],
@@ -924,10 +1000,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Leblanc": {
-    "_autogen": true,
     "roles": [
       "Mid"
     ],
@@ -937,10 +1013,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "LeeSin": {
-    "_autogen": true,
     "roles": [
       "Jungle"
     ],
@@ -950,10 +1026,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Leona": {
-    "_autogen": true,
     "roles": [
       "Support"
     ],
@@ -963,10 +1039,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Lillia": {
-    "_autogen": true,
     "roles": [
       "Jungle"
     ],
@@ -976,10 +1052,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Lissandra": {
-    "_autogen": true,
     "roles": [
       "Mid"
     ],
@@ -989,10 +1065,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Locke": {
-    "_autogen": true,
     "roles": [
       "Mid"
     ],
@@ -1002,10 +1078,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Lucian": {
-    "_autogen": true,
     "roles": [
       "ADC"
     ],
@@ -1015,10 +1091,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Lulu": {
-    "_autogen": true,
     "roles": [
       "Support"
     ],
@@ -1028,10 +1104,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Lux": {
-    "_autogen": true,
     "roles": [
       "Support"
     ],
@@ -1041,23 +1117,29 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Malphite": {
-    "_autogen": true,
     "roles": [
-      "Mid"
+      "Top",
+      "Jungle"
     ],
     "meta_info": {
-      "Mid": {
+      "Top": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
+      },
+      "Jungle": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Malzahar": {
-    "_autogen": true,
     "roles": [
       "Mid"
     ],
@@ -1067,10 +1149,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Maokai": {
-    "_autogen": true,
     "roles": [
       "Support"
     ],
@@ -1080,10 +1162,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "MasterYi": {
-    "_autogen": true,
     "roles": [
       "Jungle"
     ],
@@ -1093,10 +1175,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Mel": {
-    "_autogen": true,
     "roles": [
       "Support"
     ],
@@ -1106,10 +1188,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Milio": {
-    "_autogen": true,
     "roles": [
       "Support"
     ],
@@ -1119,10 +1201,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "MissFortune": {
-    "_autogen": true,
     "roles": [
       "ADC"
     ],
@@ -1132,10 +1214,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "MonkeyKing": {
-    "_autogen": true,
     "roles": [
       "Top"
     ],
@@ -1145,36 +1227,48 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Mordekaiser": {
-    "_autogen": true,
     "roles": [
-      "Mid"
+      "Top"
     ],
     "meta_info": {
-      "Mid": {
+      "Top": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Morgana": {
-    "_autogen": true,
     "roles": [
-      "Support"
+      "Support",
+      "Jungle",
+      "Mid"
     ],
     "meta_info": {
       "Support": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
+      },
+      "Jungle": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
+      },
+      "Mid": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Naafiri": {
-    "_autogen": true,
     "roles": [
       "Mid"
     ],
@@ -1184,10 +1278,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Nami": {
-    "_autogen": true,
     "roles": [
       "Support"
     ],
@@ -1197,23 +1291,29 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Nasus": {
-    "_autogen": true,
     "roles": [
-      "Top"
+      "Top",
+      "Jungle"
     ],
     "meta_info": {
       "Top": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
+      },
+      "Jungle": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Nautilus": {
-    "_autogen": true,
     "roles": [
       "Support"
     ],
@@ -1223,10 +1323,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Neeko": {
-    "_autogen": true,
     "roles": [
       "Support"
     ],
@@ -1236,10 +1336,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Nidalee": {
-    "_autogen": true,
     "roles": [
       "Jungle"
     ],
@@ -1249,10 +1349,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Nilah": {
-    "_autogen": true,
     "roles": [
       "Mid"
     ],
@@ -1262,10 +1362,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Nocturne": {
-    "_autogen": true,
     "roles": [
       "Jungle"
     ],
@@ -1275,10 +1375,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Nunu": {
-    "_autogen": true,
     "roles": [
       "Jungle"
     ],
@@ -1288,36 +1388,42 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Olaf": {
-    "_autogen": true,
     "roles": [
-      "Top"
+      "Top",
+      "Jungle"
     ],
     "meta_info": {
       "Top": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
+      },
+      "Jungle": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Orianna": {
-    "_autogen": true,
     "roles": [
-      "Support"
+      "Mid"
     ],
     "meta_info": {
-      "Support": {
+      "Mid": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Ornn": {
-    "_autogen": true,
     "roles": [
       "Top"
     ],
@@ -1327,10 +1433,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Pantheon": {
-    "_autogen": true,
     "roles": [
       "Mid"
     ],
@@ -1340,23 +1446,35 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Poppy": {
-    "_autogen": true,
     "roles": [
-      "Top"
+      "Top",
+      "Jungle",
+      "Support"
     ],
     "meta_info": {
       "Top": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
+      },
+      "Jungle": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
+      },
+      "Support": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Pyke": {
-    "_autogen": true,
     "roles": [
       "Support"
     ],
@@ -1366,10 +1484,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Qiyana": {
-    "_autogen": true,
     "roles": [
       "Mid"
     ],
@@ -1379,23 +1497,23 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Quinn": {
-    "_autogen": true,
     "roles": [
-      "Top"
+      "ADC"
     ],
     "meta_info": {
-      "Top": {
+      "ADC": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Rakan": {
-    "_autogen": true,
     "roles": [
       "Support"
     ],
@@ -1405,10 +1523,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Rammus": {
-    "_autogen": true,
     "roles": [
       "Jungle"
     ],
@@ -1418,10 +1536,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "RekSai": {
-    "_autogen": true,
     "roles": [
       "Jungle"
     ],
@@ -1431,10 +1549,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Rell": {
-    "_autogen": true,
     "roles": [
       "Support"
     ],
@@ -1444,10 +1562,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Renata": {
-    "_autogen": true,
     "roles": [
       "Support"
     ],
@@ -1457,10 +1575,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Renekton": {
-    "_autogen": true,
     "roles": [
       "Top"
     ],
@@ -1470,49 +1588,55 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Rengar": {
-    "_autogen": true,
     "roles": [
-      "Jungle"
+      "Jungle",
+      "Top"
     ],
     "meta_info": {
       "Jungle": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
+      },
+      "Top": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Riven": {
-    "_autogen": true,
     "roles": [
-      "Mid"
+      "Top"
     ],
     "meta_info": {
-      "Mid": {
+      "Top": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Rumble": {
-    "_autogen": true,
     "roles": [
-      "Mid"
+      "Top"
     ],
     "meta_info": {
-      "Mid": {
+      "Top": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Ryze": {
-    "_autogen": true,
     "roles": [
       "Mid"
     ],
@@ -1522,10 +1646,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Samira": {
-    "_autogen": true,
     "roles": [
       "ADC"
     ],
@@ -1535,10 +1659,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Sejuani": {
-    "_autogen": true,
     "roles": [
       "Jungle"
     ],
@@ -1548,10 +1672,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Senna": {
-    "_autogen": true,
     "roles": [
       "Support"
     ],
@@ -1561,23 +1685,29 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Seraphine": {
-    "_autogen": true,
     "roles": [
-      "Support"
+      "Support",
+      "Mid"
     ],
     "meta_info": {
       "Support": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
+      },
+      "Mid": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Sett": {
-    "_autogen": true,
     "roles": [
       "Top"
     ],
@@ -1587,23 +1717,29 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Shaco": {
-    "_autogen": true,
     "roles": [
-      "Jungle"
+      "Jungle",
+      "Support"
     ],
     "meta_info": {
       "Jungle": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
+      },
+      "Support": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Shen": {
-    "_autogen": true,
     "roles": [
       "Top"
     ],
@@ -1613,10 +1749,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Shyvana": {
-    "_autogen": true,
     "roles": [
       "Jungle"
     ],
@@ -1626,36 +1762,42 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Singed": {
-    "_autogen": true,
     "roles": [
-      "Mid"
+      "Top"
     ],
     "meta_info": {
-      "Mid": {
+      "Top": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Sion": {
-    "_autogen": true,
     "roles": [
-      "Top"
+      "Top",
+      "Mid"
     ],
     "meta_info": {
       "Top": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
+      },
+      "Mid": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Sivir": {
-    "_autogen": true,
     "roles": [
       "ADC"
     ],
@@ -1665,10 +1807,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Skarner": {
-    "_autogen": true,
     "roles": [
       "Jungle"
     ],
@@ -1678,10 +1820,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Smolder": {
-    "_autogen": true,
     "roles": [
       "ADC"
     ],
@@ -1691,10 +1833,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Sona": {
-    "_autogen": true,
     "roles": [
       "Support"
     ],
@@ -1704,10 +1846,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Soraka": {
-    "_autogen": true,
     "roles": [
       "Support"
     ],
@@ -1717,10 +1859,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Swain": {
-    "_autogen": true,
     "roles": [
       "Support"
     ],
@@ -1730,10 +1872,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Sylas": {
-    "_autogen": true,
     "roles": [
       "Mid"
     ],
@@ -1743,23 +1885,29 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Syndra": {
-    "_autogen": true,
     "roles": [
-      "Mid"
+      "Mid",
+      "ADC"
     ],
     "meta_info": {
       "Mid": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
+      },
+      "ADC": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "TahmKench": {
-    "_autogen": true,
     "roles": [
       "Support"
     ],
@@ -1769,36 +1917,48 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Taliyah": {
-    "_autogen": true,
     "roles": [
-      "Support"
+      "Jungle",
+      "Mid"
     ],
     "meta_info": {
-      "Support": {
+      "Jungle": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
+      },
+      "Mid": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Talon": {
-    "_autogen": true,
     "roles": [
-      "Mid"
+      "Mid",
+      "Jungle"
     ],
     "meta_info": {
       "Mid": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
+      },
+      "Jungle": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Taric": {
-    "_autogen": true,
     "roles": [
       "Support"
     ],
@@ -1808,10 +1968,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Teemo": {
-    "_autogen": true,
     "roles": [
       "ADC"
     ],
@@ -1821,10 +1981,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Thresh": {
-    "_autogen": true,
     "roles": [
       "Support"
     ],
@@ -1834,23 +1994,29 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Tristana": {
-    "_autogen": true,
     "roles": [
-      "ADC"
+      "ADC",
+      "Mid"
     ],
     "meta_info": {
       "ADC": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
+      },
+      "Mid": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Trundle": {
-    "_autogen": true,
     "roles": [
       "Top"
     ],
@@ -1860,23 +2026,23 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Tryndamere": {
-    "_autogen": true,
     "roles": [
-      "Mid"
+      "Top"
     ],
     "meta_info": {
-      "Mid": {
+      "Top": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "TwistedFate": {
-    "_autogen": true,
     "roles": [
       "ADC"
     ],
@@ -1886,23 +2052,29 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Twitch": {
-    "_autogen": true,
     "roles": [
-      "ADC"
+      "ADC",
+      "Jungle"
     ],
     "meta_info": {
       "ADC": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
+      },
+      "Jungle": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Udyr": {
-    "_autogen": true,
     "roles": [
       "Jungle"
     ],
@@ -1912,10 +2084,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Urgot": {
-    "_autogen": true,
     "roles": [
       "Top"
     ],
@@ -1925,10 +2097,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Varus": {
-    "_autogen": true,
     "roles": [
       "ADC"
     ],
@@ -1938,10 +2110,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Vayne": {
-    "_autogen": true,
     "roles": [
       "ADC",
       "Top"
@@ -1957,23 +2129,29 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Veigar": {
-    "_autogen": true,
     "roles": [
-      "Mid"
+      "Mid",
+      "ADC"
     ],
     "meta_info": {
       "Mid": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
+      },
+      "ADC": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Velkoz": {
-    "_autogen": true,
     "roles": [
       "Support"
     ],
@@ -1983,10 +2161,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Vex": {
-    "_autogen": true,
     "roles": [
       "Mid"
     ],
@@ -1996,10 +2174,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Vi": {
-    "_autogen": true,
     "roles": [
       "Jungle"
     ],
@@ -2009,10 +2187,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Viego": {
-    "_autogen": true,
     "roles": [
       "Jungle"
     ],
@@ -2022,23 +2200,29 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Viktor": {
-    "_autogen": true,
     "roles": [
-      "Mid"
+      "Mid",
+      "ADC"
     ],
     "meta_info": {
       "Mid": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
+      },
+      "ADC": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Vladimir": {
-    "_autogen": true,
     "roles": [
       "Mid"
     ],
@@ -2048,23 +2232,29 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Volibear": {
-    "_autogen": true,
     "roles": [
-      "Top"
+      "Top",
+      "Jungle"
     ],
     "meta_info": {
       "Top": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
+      },
+      "Jungle": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Warwick": {
-    "_autogen": true,
     "roles": [
       "Jungle"
     ],
@@ -2074,10 +2264,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Xayah": {
-    "_autogen": true,
     "roles": [
       "ADC"
     ],
@@ -2087,23 +2277,29 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Xerath": {
-    "_autogen": true,
     "roles": [
+      "Mid",
       "Support"
     ],
     "meta_info": {
+      "Mid": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
+      },
       "Support": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "XinZhao": {
-    "_autogen": true,
     "roles": [
       "Jungle"
     ],
@@ -2113,23 +2309,29 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Yone": {
-    "_autogen": true,
     "roles": [
-      "Mid"
+      "Mid",
+      "Top"
     ],
     "meta_info": {
       "Mid": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
+      },
+      "Top": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Yorick": {
-    "_autogen": true,
     "roles": [
       "Top"
     ],
@@ -2139,10 +2341,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Yunara": {
-    "_autogen": true,
     "roles": [
       "ADC"
     ],
@@ -2152,10 +2354,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Yuumi": {
-    "_autogen": true,
     "roles": [
       "Support"
     ],
@@ -2165,10 +2367,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Zaahen": {
-    "_autogen": true,
     "roles": [
       "Mid"
     ],
@@ -2178,10 +2380,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Zac": {
-    "_autogen": true,
     "roles": [
       "Jungle"
     ],
@@ -2191,23 +2393,29 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Zed": {
-    "_autogen": true,
     "roles": [
-      "Mid"
+      "Mid",
+      "Jungle"
     ],
     "meta_info": {
       "Mid": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
+      },
+      "Jungle": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Zeri": {
-    "_autogen": true,
     "roles": [
       "ADC"
     ],
@@ -2217,10 +2425,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Ziggs": {
-    "_autogen": true,
     "roles": [
       "Mid"
     ],
@@ -2230,10 +2438,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Zilean": {
-    "_autogen": true,
     "roles": [
       "Support"
     ],
@@ -2243,10 +2451,10 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Zoe": {
-    "_autogen": true,
     "roles": [
       "Mid"
     ],
@@ -2256,19 +2464,26 @@
         "core_builds": [],
         "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   },
   "Zyra": {
-    "_autogen": true,
     "roles": [
-      "Support"
+      "Support",
+      "Jungle"
     ],
     "meta_info": {
       "Support": {
         "threat": 3,
         "core_builds": [],
         "tactics": ""
+      },
+      "Jungle": {
+        "threat": 3,
+        "core_builds": [],
+        "tactics": ""
       }
-    }
+    },
+    "_autogen": true
   }
 }
