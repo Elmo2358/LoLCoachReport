@@ -40,6 +40,16 @@ def reports_dir():
     return _subdir("reports")
 
 
+def champion_md_dir():
+    """ロール別チャンピオン対策Markdownの出力先。"""
+    return _subdir("champion_md")
+
+
+def meta_mapping_path():
+    """手動管理のチャンピオンメタJSON。"""
+    return os.path.join(app_dir(), "champion_meta_mapping.json")
+
+
 def settings_path():
     return os.path.join(app_dir(), "settings.json")
 
