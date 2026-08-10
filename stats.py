@@ -158,6 +158,7 @@ def _extract_participant(p, dd, duration_min, team_kills):
         "name": _player_name(p),
         "champion": dd.champion(champ_id, fallback=p.get("championName", "")),
         "champion_en": p.get("championName", ""),
+        "is_fiddlesticks": champ_id == 9,
         "role": role,
         "role_label": ROLE_LABEL.get(role, role[:3]),
         "team_id": p.get("teamId"),
@@ -235,6 +236,9 @@ def _extract_participant(p, dd, duration_min, team_kills):
         "aces_before15": ch.get("acesBefore15Minutes"),
         "perfect_game": ch.get("perfectGame"),
         "bounty_gold": ch.get("bountyGold"),
+        # 自身のワードが関与したキル数。フィドルの身代わり人形の戦果の proxy として使用
+        # （身代わり人形の設置数は Riot API から取得できないため）。
+        "ward_takedowns": int(ch["wardTakedowns"]) if ch.get("wardTakedowns") is not None else None,
     }
 
 

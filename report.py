@@ -103,6 +103,12 @@ def _player_block(p, focal=False, header=True):
     lines.append(f"- **視界** スコア {p['vision_score']} ({_pm(p['vision_per_min'])}) | "
                  f"ワード設置 {p['wards_placed']} / 破壊 {p['wards_killed']} / "
                  f"コントロールワード {p['control_wards']}")
+    if p.get("is_fiddlesticks"):
+        # 身代わり人形の設置数は Riot API（match-v5 / timeline）から取得できない。
+        # 代わりに Effigy の貢献を示す proxy 指標（ward戦果・視界スコア）を併記する。
+        wt = _t(p.get("ward_takedowns"))
+        lines.append(f"- **身代わり人形** 設置数はAPI非公開（ward戦果 {wt} / "
+                     f"視界スコア {p['vision_score']} がEffigy貢献の目安）")
     # レーニング指標
     lane_bits = [f"ソロキル {p['solo_kills']}" if p['solo_kills'] is not None else "",
                  f"前半10分CS {_f(p['cs_first10'], 0)}" if p['cs_first10'] is not None else "",
@@ -224,7 +230,7 @@ def _team_section(team_id, ir, focal_id):
     return "\n".join(lines)
 
 
-def _coach_prompt(focal):
+def _coach_prompt(focal, opponent=None):
     target = ""
     if focal:
         role_full = ROLE_FULL.get(focal["role"], focal["role"])
@@ -232,6 +238,8 @@ def _coach_prompt(focal):
                   f"のプレイを主眼に置いて")
     else:
         target = "試合全体の流れと各プレイヤーの動きを踏まえつつ、特に目立ったプレイヤーを"
+    matchup_clause = (f"対面「{opponent['champion']}（{opponent['name']}）」および"
+                      if opponent else "")
     return f"""以下はLeague of Legendsの1試合のデータです。あなたは経験豊富なコーチとして、{target}分析し、日本語で具体的にコーチングしてください。
 
 次の観点で順に分析し、最後に改善点と次へのアクションをまとめてください。
@@ -244,6 +252,30 @@ def _coach_prompt(focal):
 
 数値は根拠として引用し、抽象論ではなく「何を・どう・なぜ」が分かる改善提案にしてください。
 
+さらに、{matchup_clause}敵チームの主要キャリー（与ダメージやキルが多い敵）を含め、フィドルスティックス視点で脅威の大きいチャンピオンを **3〜5体** 選び、以下の形式の対策データブロックを **必ず** 出力してください。本ブロックは別ツールが自動取り込みするため、コードフェンスとJSONスキーマを厳密に守ってください。
+
+```lol-counter
+[
+  {{
+    "champion": "<チャンピオン名（試合データの表記をそのまま）>",
+    "role": "Mid | Top | Jungle | ADC | Support",
+    "threat": <1〜5の整数。5が最も厳しい>,
+    "tactics": ["対策を具体的に。1要素=1観点。必ず配列で"],
+    "core_builds": [["アイテム1", "アイテム2"]],
+    "summoner_spells": ["フラッシュ", "…"],
+    "keystone": "キーストーン名（分かる場合のみ）",
+    "power_spikes": ["最初のアイテム完成時", "…"]
+  }}
+]
+```
+
+注意:
+- champion は上記試合データに登場する表記をそのまま使ってください。
+- 対面（同じロールの敵）は必ず1体含めてください。
+- champion / role / threat は必須、他は判明したもののみで構いません（省略可）。
+- tactics は必ず **文字列の配列** として出力してください（単一文字列は不可）。core_builds は配列の配列、不明なら空配列 `[]`。
+- fetched_meta 等の統計値は本ブロックに含めないでください（主観的な対策のみ）。
+
 ---
 
 """
@@ -253,8 +285,9 @@ def build_report(ir, coach=False, focal=None):
     meta = ir["meta"]
     out = []
 
+    opp = _find_opponent(ir, focal) if focal else None
     if coach:
-        out.append(_coach_prompt(focal))
+        out.append(_coach_prompt(focal, opp))
 
     # タイトル：自分（focal）がいれば最も強調
     if focal:
@@ -285,7 +318,7 @@ def build_report(ir, coach=False, focal=None):
         out.append(f"## 👑 あなたのプレイ — {focal['name']}（{focal['champion']} / {role_full}）"
                    f"— {_result_str(focal)}")
         out.append(_player_block(focal, header=False))
-        out.append(_comparison_section(focal, _find_opponent(ir, focal)))
+        out.append(_comparison_section(focal, opp))
 
     # チーム別（あなたは👑欄に詳細があるためチーム欄ではコンパクト）
     out.append(_team_section(100, ir, focal))

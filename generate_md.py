@@ -273,8 +273,17 @@ def _render_champion(name, info, role, dd, valid_items):
     if threat is not None:
         L.append(f"- **脅威度:** {_stars(threat)}")
     tac = ri.get("tactics")
-    L.append(f"- **対策（フィドル視点）:** {tac}" if tac
-             else "- **対策（フィドル視点）:** （未登録）")
+    if tac:
+        if isinstance(tac, str):
+            L.append(f"- **対策（フィドル視点）:** {tac}")
+        elif isinstance(tac, list):
+            L.append("- **対策（フィドル視点）:**")
+            for t in tac:
+                L.append(f"  - {t}")
+        else:
+            L.append(f"- **対策（フィドル視点）:** {tac}")
+    else:
+        L.append("- **対策（フィドル視点）:** （未登録）")
     L.append("")
     L.append("---")
     return "\n".join(L), None

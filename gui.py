@@ -7,6 +7,7 @@ import json
 import os
 import sys
 import threading
+import datetime
 import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
 
@@ -15,6 +16,11 @@ import core
 import csv_export
 import config
 import appfonts
+import generate_md
+import meta_loader
+import counter_merge
+import init_meta_json
+from counter_merge import CounterMergeError
 from riot_client import SERVER_TO_PLATFORM
 
 # バンドルフォント（Cinzel）をプロセスに登録（Tk 生成前）
@@ -129,6 +135,8 @@ class App:
         except Exception:
             pass
         self.result = None
+        self.paste_btn = None
+        self.patch_btn = None
         self._build_ui()
         self._load_settings()
 
@@ -199,10 +207,41 @@ class App:
         self.run_btn = ttk.Button(bf, text="取得して出力", style="Primary.TButton", command=self._on_run)
         self.run_btn.pack(side="left", padx=(0, 8))
         ttk.Button(bf, text="サンプルでテスト（オフライン）", style="Hex.TButton", command=self._on_sample).pack(side="left")
+        self.patch_btn = ttk.Button(bf, text="最新パッチへ更新", style="Hex.TButton",
+                                    command=self._on_patch_update)
+        self.patch_btn.pack(side="left", padx=(12, 0))
 
         # ---- ステータス ----
         self.status_var = tk.StringVar(value="準備完了。試合IDを入力（または空欄で自分の直近）して「取得して出力」。")
         ttk.Label(self.root, textvariable=self.status_var, style="Status.TLabel").pack(anchor="w", padx=14, pady=(2, 4))
+
+        # ---- チャンピオン対策メンテナンス（折りたたみ可能） ----
+        # クリックで展開/折りたたみ。普段は畳んで結果プレビューの縦スペースを確保。
+        cm_outer = ttk.Frame(self.root, style="Panel.TFrame", padding=(12, 8, 12, 10))
+        cm_outer.pack(fill="x", padx=10, pady=(6, 4))
+        self.cm_header = ttk.Label(
+            cm_outer, text="▶ チャンピオン対策メンテナンス（クリックで展開）",
+            style="Section.TLabel", cursor="hand2")
+        self.cm_header.pack(anchor="w")
+        self.cm_header.bind("<Button-1>", self._toggle_cm)
+        tk.Frame(cm_outer, height=1, bg=GOLD_DK, bd=0, highlightthickness=0).pack(fill="x", pady=(2, 8))
+        self.cm_body = ttk.Frame(cm_outer, style="Panel.TFrame")
+        # デフォルトは折りたたみ（pack しない → プレビュー領域を広く確保）
+        self.paste_text = tk.Text(self.cm_body, height=8, wrap="word", font=MONO, bg=PANEL, fg=TEXT,
+                                  insertbackground=TEXT, borderwidth=0, highlightthickness=1,
+                                  highlightbackground=GOLD_DK, highlightcolor=GOLD,
+                                  selectbackground=ACCENT, selectforeground=BG,
+                                  padx=10, pady=8, spacing1=1, spacing3=1)
+        self.paste_text.pack(fill="x")
+        cm_row = ttk.Frame(self.cm_body, style="Panel.TFrame")
+        cm_row.pack(fill="x", pady=(6, 0))
+        self.paste_btn = ttk.Button(cm_row, text="解析してJSONを更新", style="Hex.TButton",
+                                    command=self._on_paste_apply)
+        self.paste_btn.pack(side="left")
+        self.paste_status_var = tk.StringVar(
+            value="AI 出力の ```lol-counter ブロックを貼り付け → ボタンで対策JSONとMDを更新。")
+        ttk.Label(cm_row, textvariable=self.paste_status_var, style="Hint.TLabel").pack(
+            side="left", padx=(10, 0))
 
         # ---- プレビュー ----
         self._panel(self.root, "結果プレビュー")
@@ -368,11 +407,118 @@ class App:
     def _on_error(self, msg):
         self._set_busy(False, "")
         self.status_var.set("✕ エラー")
-        messagebox.showerror("エラー", msg)
+        messagebox.showerror("エラー", msg, parent=self.root)
+
+    # ---------------- チャンピオン対策メンテナンス（機能2） ----------------
+    def _toggle_cm(self, event=None):
+        if self.cm_body.winfo_ismapped():
+            self.cm_body.pack_forget()
+            self.cm_header.configure(text="▶ チャンピオン対策メンテナンス（クリックで展開）")
+        else:
+            self.cm_body.pack(fill="x")
+            self.cm_header.configure(text="▼ チャンピオン対策メンテナンス（クリックで折りたたみ）")
+
+    def _on_paste_apply(self):
+        raw = self.paste_text.get("1.0", "end-1c")
+        if not raw.strip():
+            messagebox.showwarning("入力なし", "```lol-counter ブロックを貼り付けてください。")
+            return
+        self._set_busy(True, "対策ブロックを解析中...")
+        threading.Thread(target=self._worker_paste_apply, args=(raw,), daemon=True).start()
+
+    def _worker_paste_apply(self, raw):
+        try:
+            progress = self._make_progress()
+            if not os.path.exists(paths.meta_mapping_path()):
+                progress("初回のため対策データを初期化中（数十秒）...")
+                init_meta_json.main()
+            progress("Data Dragon を準備中（初回は数十秒）...")
+            import ddragon as _dd_mod
+            dd = _dd_mod.DDragon("latest", locale="ja_JP", load_full=True)
+            if not dd.champion_detail:
+                raise CounterMergeError("Data Dragon のスキル詳細が取得できませんでした（ネットワークを確認）。")
+            result = counter_merge.apply_counter_block(raw, dd=dd, progress=progress)
+            msg = (f"{len(result.updated)} 件のチャンピオン対策を更新しました: "
+                   + ", ".join(f"{n}({r})" for n, r in result.updated))
+            if result.skipped_role:
+                msg += f"\nロール不一致でスキップ: {len(result.skipped_role)} 件"
+            if result.unknown_champions:
+                msg += f"\n未知のチャンピオン(スキップ): {', '.join(result.unknown_champions)}"
+            self.root.after(0, lambda: self._on_paste_done(msg, result))
+        except CounterMergeError as e:
+            self.root.after(0, lambda: self._on_error(str(e)))
+        except Exception as e:
+            self.root.after(0, lambda: self._on_error(f"予期しないエラー: {e}"))
+
+    def _on_paste_done(self, msg, result):
+        self._set_busy(False, "")
+        self.paste_status_var.set(f"✔ 更新完了（{len(result.updated)} 件）")
+        self.status_var.set(f"✔ 対策を {len(result.updated)} 件更新しました")
+        messagebox.showinfo("対策メンテナンス完了", msg, parent=self.root)
+
+    # ---------------- パッチ更新（機能3） ----------------
+    def _on_patch_update(self):
+        if not messagebox.askyesno(
+                "パッチ更新",
+                "最新パッチのデータを取得し、U.GG 統計と対策Markdownを再生成します。\n"
+                "（ネットワーク接続が必要。数十秒〜1分程度かかります）\n続行しますか？"):
+            return
+        self._set_busy(True, "最新パッチを確認中...")
+        threading.Thread(target=self._worker_patch_update, daemon=True).start()
+
+    def _worker_patch_update(self):
+        try:
+            progress = self._make_progress()
+            if not os.path.exists(paths.meta_mapping_path()):
+                progress("初回のため対策データを初期化中（数十秒）...")
+                init_meta_json.main()
+            progress("Data Dragon 最新パッチを取得中...")
+            import ddragon as _dd_mod
+            dd = _dd_mod.DDragon("latest", locale="ja_JP", load_full=True)
+            version = dd.version
+            if not dd.champion_detail:
+                raise CounterMergeError("Data Dragon のスキル詳細が取得できませんでした（ネットワークを確認）。")
+            progress("U.GG 統計を取得中（失敗時はスキップ）...")
+            key2name = {str(k): v for k, v in (dd.champion_keys or {}).items()}
+            role_stats, params, note = meta_loader.gather(
+                meta_loader.ROLES, use_cache=False, key2name=key2name)
+            updated_fetched = 0
+            if role_stats:
+                progress("fetched_meta を JSON に反映中...")
+                meta_loader.update_meta_json(
+                    role_stats, params or {}, datetime.date.today().isoformat())
+                updated_fetched = sum(len(v) for v in role_stats.values())
+            progress("対策Markdownを再生成中...")
+            meta = generate_md._load_meta()
+            valid_items = set((dd.items or {}).values())
+            today = datetime.date.today().isoformat()
+            generate_md._run_full(dd, meta, valid_items, today)
+            generate_md._write_state(version, dd.locale)
+            self.root.after(0, lambda: self._on_patch_done(version, updated_fetched, note))
+        except CounterMergeError as e:
+            self.root.after(0, lambda: self._on_error(str(e)))
+        except Exception as e:
+            self.root.after(0, lambda: self._on_error(f"予期しないエラー: {e}"))
+
+    def _on_patch_done(self, version, updated_fetched, note):
+        self._set_busy(False, "")
+        self.status_var.set(f"✔ パッチ {version} に更新しました（fetched_meta {updated_fetched} 件）")
+        messagebox.showinfo("パッチ更新完了",
+            f"パッチ {version} に更新しました。\n"
+            f"fetched_meta: {updated_fetched} 件\n"
+            f"U.GG: {note}\n"
+            f"対策Markdown を再生成しました。",
+            parent=self.root)
 
     # ---------------- ユーティリティ ----------------
     def _set_busy(self, busy, text):
-        self.run_btn.configure(state="disabled" if busy else "normal")
+        state = "disabled" if busy else "normal"
+        for btn in (self.run_btn, self.paste_btn, self.patch_btn):
+            if btn is not None:
+                try:
+                    btn.configure(state=state)
+                except Exception:
+                    pass
         if text:
             self.status_var.set(text)
 
