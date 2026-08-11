@@ -37,8 +37,8 @@ import requests
 
 import ddragon
 import paths
+from generate_md import ROLES
 
-ROLES = ["Top", "Jungle", "Mid", "ADC", "Support"]
 # 当アプリのロール -> U.GG tier-list の URL slug / データ内 role キー
 ROLE_TO_SLUG = {
     "Top": "top-lane", "Jungle": "jungle", "Mid": "mid-lane",

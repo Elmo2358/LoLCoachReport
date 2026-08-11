@@ -16,12 +16,13 @@ import core
 import csv_export
 import config
 import appfonts
+import ddragon
 import generate_md
 import meta_loader
 import counter_merge
 import init_meta_json
 from counter_merge import CounterMergeError
-from riot_client import SERVER_TO_PLATFORM
+from riot_client import RiotClient, SERVER_TO_PLATFORM
 
 # バンドルフォント（Cinzel）をプロセスに登録（Tk 生成前）
 appfonts.register()
@@ -329,7 +330,6 @@ class App:
             sp = paths.sample_path()
             with open(sp, encoding="utf-8") as f:
                 match = json.load(f)
-            from riot_client import RiotClient
             _, server = RiotClient.parse_region(match["metadata"]["matchId"])
             result = core.process_match_data(match, server, lang="ja",
                                              coach=self.coach_var.get(),
@@ -426,17 +426,22 @@ class App:
         self._set_busy(True, "対策ブロックを解析中...")
         threading.Thread(target=self._worker_paste_apply, args=(raw,), daemon=True).start()
 
+    def _prepare_meta_and_dd(self, progress):
+        """[worker thread] meta_mapping と DDragon(latest, full) を準備して dd を返す。
+        失敗時は CounterMergeError を送出（呼出元で catch 済）。"""
+        if not os.path.exists(paths.meta_mapping_path()):
+            progress("初回のため対策データを初期化中（数十秒）...")
+            init_meta_json.main()
+        progress("Data Dragon を準備中（初回は数十秒）...")
+        dd = ddragon.DDragon("latest", locale="ja_JP", load_full=True)
+        if not dd.champion_detail:
+            raise CounterMergeError("Data Dragon のスキル詳細が取得できませんでした（ネットワークを確認）。")
+        return dd
+
     def _worker_paste_apply(self, raw):
         try:
             progress = self._make_progress()
-            if not os.path.exists(paths.meta_mapping_path()):
-                progress("初回のため対策データを初期化中（数十秒）...")
-                init_meta_json.main()
-            progress("Data Dragon を準備中（初回は数十秒）...")
-            import ddragon as _dd_mod
-            dd = _dd_mod.DDragon("latest", locale="ja_JP", load_full=True)
-            if not dd.champion_detail:
-                raise CounterMergeError("Data Dragon のスキル詳細が取得できませんでした（ネットワークを確認）。")
+            dd = self._prepare_meta_and_dd(progress)
             result = counter_merge.apply_counter_block(raw, dd=dd, progress=progress)
             msg = (f"{len(result.updated)} 件のチャンピオン対策を更新しました: "
                    + ", ".join(f"{n}({r})" for n, r in result.updated))
@@ -469,15 +474,8 @@ class App:
     def _worker_patch_update(self):
         try:
             progress = self._make_progress()
-            if not os.path.exists(paths.meta_mapping_path()):
-                progress("初回のため対策データを初期化中（数十秒）...")
-                init_meta_json.main()
-            progress("Data Dragon 最新パッチを取得中...")
-            import ddragon as _dd_mod
-            dd = _dd_mod.DDragon("latest", locale="ja_JP", load_full=True)
+            dd = self._prepare_meta_and_dd(progress)
             version = dd.version
-            if not dd.champion_detail:
-                raise CounterMergeError("Data Dragon のスキル詳細が取得できませんでした（ネットワークを確認）。")
             progress("U.GG 統計を取得中（失敗時はスキップ）...")
             key2name = {str(k): v for k, v in (dd.champion_keys or {}).items()}
             role_stats, params, note = meta_loader.gather(
@@ -528,14 +526,6 @@ class App:
             f.write(content)
 
 
-def _load_env():
-    try:
-        from dotenv import load_dotenv
-        load_dotenv()
-    except Exception:
-        pass
-
-
 def _fix_stdio():
     if getattr(sys, "frozen", False):
         if sys.stdout is None:
@@ -554,7 +544,6 @@ def _set_app_user_model_id(app_id="elmo2358.LoLCoachReport"):
 
 def main():
     _fix_stdio()
-    _load_env()
     _set_app_user_model_id()
     root = tk.Tk()
     App(root)

@@ -12,6 +12,15 @@ class ProcessError(Exception):
     """処理中のユーザー向けエラー。"""
 
 
+def safe_progress(progress, msg):
+    """progress コールバックが例外を投げても呼出元を止めない。"""
+    if progress:
+        try:
+            progress(msg)
+        except Exception:
+            pass
+
+
 def find_me(ir):
     """IR から自分（.env の MY_GAME_NAME#MY_TAG_LINE）を探す。"""
     _, _, full, _, _ = config.get_my_account()
@@ -47,11 +56,7 @@ def resolve_focal(ir, player):
 def process_match_data(match, server, lang="ja", coach=False, player=None, progress=None):
     """取得済みの試合データから統計抽出＋レポート生成（ネットワーク不要）。"""
     def _p(msg):
-        if progress:
-            try:
-                progress(msg)
-            except Exception:
-                pass
+        safe_progress(progress, msg)
 
     game_version = match.get("info", {}).get("gameVersion", "")
     _p("Data Dragon 取得中（初回は数十秒かかる場合があります）...")
@@ -75,11 +80,7 @@ def process_match_data(match, server, lang="ja", coach=False, player=None, progr
 def process(api_key, match_id=None, auto_me=False, lang="ja", coach=False, player=None, progress=None):
     """APIキーと試合ID（または自動取得）からレポートを生成。"""
     def _p(msg):
-        if progress:
-            try:
-                progress(msg)
-            except Exception:
-                pass
+        safe_progress(progress, msg)
 
     if not api_key:
         raise ProcessError("APIキーが設定されていません。GUIのAPIキー欄に入力してください。")

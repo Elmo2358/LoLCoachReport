@@ -14,11 +14,6 @@ import json
 import os
 import sys
 
-try:
-    from dotenv import load_dotenv
-except ImportError:
-    load_dotenv = None
-
 import paths
 import core
 import csv_export
@@ -56,9 +51,6 @@ def main():
     ap.add_argument("--clip", action="store_true", help="レポートをクリップボードへコピー")
     ap.add_argument("--csv", action="store_true", help="参加者統計をCSVで data/reports/ に保存")
     args = ap.parse_args()
-
-    if load_dotenv is not None:
-        load_dotenv()
 
     try:
         if args.demo:

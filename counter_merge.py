@@ -13,6 +13,7 @@ from dataclasses import dataclass, field
 
 import paths
 import generate_md
+from core import safe_progress
 
 
 class CounterMergeError(Exception):
@@ -119,15 +120,7 @@ def _normalize_str_list(v, field_name):
 
 
 def _normalize_tactics(v):
-    if v is None:
-        return None
-    if isinstance(v, str):
-        return [v.strip()] if v.strip() else None
-    if isinstance(v, list):
-        out = [str(x).strip() for x in v if str(x).strip()]
-        return out or None
-    raise CounterMergeError(f"tactics は文字列または文字列の配列である必要があります "
-                            f"(got {type(v).__name__})")
+    return _normalize_str_list(v, "tactics")
 
 
 def _normalize_core_builds(v):
@@ -237,11 +230,7 @@ def apply_counter_block(text, *, dd, today_iso=None, regen_md=True, progress=Non
     戻り値: MergeResult。全エントリが失敗した場合は書き込まず CounterMergeError。
     """
     def _p(msg):
-        if progress:
-            try:
-                progress(msg)
-            except Exception:
-                pass
+        safe_progress(progress, msg)
 
     _p("対策ブロックを抽出中...")
     block_json = _extract_block(text)

@@ -3,6 +3,8 @@
 そのまま Gemini（等のLLM）へ貼り付けられる構造化テキストを出力する。
 """
 
+from stats import _sec_to_mmss as _mmss
+
 ROLE_FULL = {
     "TOP": "トップ", "JUNGLE": "ジャングル", "MIDDLE": "ミッド",
     "BOTTOM": "ボット(ADC)", "UTILITY": "サポート",
@@ -59,13 +61,6 @@ def _f(x, nd=1):
 
 def _yn(b):
     return "◯" if b else "-"
-
-
-def _mmss(seconds):
-    if seconds is None:
-        return None
-    seconds = int(round(seconds))
-    return f"{seconds // 60:02d}:{seconds % 60:02d}"
 
 
 def _team_side(team_id):

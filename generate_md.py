@@ -450,19 +450,27 @@ def compute_changed_champions(old_data, new_data):
             "modified": modified}
 
 
+def _generate_role_file(role, dd, meta, valid_items, today, out_dir):
+    """1ロール分を生成して ((role, count, path), warns) を返す。
+    対象チャンピオンが無ければ (None, [])。"""
+    champs = _champs_for_role(meta, role)
+    if not champs:
+        return None, []
+    text, warns = _render_file(role, dd, champs, valid_items, today)
+    path = os.path.join(out_dir, f"{role}_Champions.md")
+    _write_file(path, text)
+    return (role, len(champs), path), warns
+
+
 def _run_full(dd, meta, valid_items, today):
     """全ロールファイルを生成。"""
     out_dir = paths.champion_md_dir()
     written, all_warns = [], []
     for role in ROLES:
-        champs = _champs_for_role(meta, role)
-        if not champs:
-            continue
-        text, warns = _render_file(role, dd, champs, valid_items, today)
-        path = os.path.join(out_dir, f"{role}_Champions.md")
-        _write_file(path, text)
-        written.append((role, len(champs), path))
-        all_warns.extend(warns)
+        entry, warns = _generate_role_file(role, dd, meta, valid_items, today, out_dir)
+        if entry:
+            written.append(entry)
+            all_warns.extend(warns)
     _print_summary(f"全件生成（パッチ {dd.version}）:", written, warns=all_warns)
     return written
 
@@ -503,14 +511,10 @@ def _run_diff(dd, meta, valid_items, today):
     for role in ROLES:
         if role not in affected_roles:
             continue
-        champs = _champs_for_role(meta, role)
-        if not champs:
-            continue
-        text, warns = _render_file(role, dd, champs, valid_items, today)
-        path = os.path.join(out_dir, f"{role}_Champions.md")
-        _write_file(path, text)
-        written.append((role, len(champs), path))
-        all_warns.extend(warns)
+        entry, warns = _generate_role_file(role, dd, meta, valid_items, today, out_dir)
+        if entry:
+            written.append(entry)
+            all_warns.extend(warns)
     skipped = [r for r in ROLES if r not in affected_roles]
 
     # レポート（要件C: 手動アップロード時の確認漏れ防止）

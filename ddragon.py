@@ -182,21 +182,9 @@ class DDragon:
         }
 
     # ---- スキル詳細の参照 ----
-    def internal_name(self, champion_key):
-        """数値 championId -> DDragon内部名（championFull のキー）。未解決は None。"""
-        try:
-            return self.champion_keys.get(int(champion_key))
-        except (TypeError, ValueError):
-            return None
-
     def detail(self, internal_name):
         """内部名 -> チャンピオン詳細dict。未収録は None。"""
         return self.champion_detail.get(internal_name)
-
-    def detail_by_key(self, champion_key):
-        """数値ID -> 詳細（内部名を経由）。未解決は None。"""
-        name = self.internal_name(champion_key)
-        return self.detail(name) if name else None
 
     # ---- 名称参照（常に文字列を返す） ----
     def champion(self, champion_id, fallback=""):
